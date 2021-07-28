@@ -4,30 +4,62 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] float timeToDestroy, timeToChangeColor;
-    [SerializeField] Material material;
+    [SerializeField] float minTimeToFall, maxTimeToFall, timeToChangeColor, fallSpeed;
     [SerializeField] Color colorA, colorB;
-    float timerDestroy = 0, timerChangeColor = 0;
+    Renderer renderer;
+    float timeToFall, timerFall, timerChangeColor;
+    bool isDestroyed;
+
+    private void Awake()
+    {
+        timeToFall = Random.Range(minTimeToFall, maxTimeToFall);
+        renderer = GetComponent<Renderer>();
+    }
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        timerDestroy += Time.deltaTime / timeToDestroy;
-        Debug.Log("Timer Destroy: " + timerDestroy);
-        if(timerDestroy >= timeToDestroy)
+        StartCoroutine("StartFallCountdown");
+    }
+
+    IEnumerator StartFallCountdown()
+    {
+        yield return new WaitForSeconds(timeToFall);
+        StartCoroutine("LerpColorPlatform");
+    }
+
+    IEnumerator LerpColorPlatform()
+    {
+        timerChangeColor = 0;
+         while (true)
         {
-            Debug.Log("Destroing platform");
-            DestroyPlatform();
+            timerChangeColor += Time.deltaTime;
+            renderer.material.color = Color.Lerp(colorA, colorB, timerChangeColor / timeToChangeColor);
+            yield return null;
+            if (timerChangeColor >= timeToChangeColor)
+            {
+                StartCoroutine("FallPlatform");
+                yield break;
+            }
         }
     }
 
-    void DestroyPlatform()
+    IEnumerator FallPlatform()
     {
-         while(true)
+        while (!isDestroyed)
         {
-            timerChangeColor += Time.deltaTime / timeToChangeColor;
-            material.color = Color.Lerp(colorA, colorB, timerChangeColor);
-            if (timerChangeColor >= timeToChangeColor) Destroy(gameObject);
+            transform.position -= Vector3.up * fallSpeed * Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("DeathBorder"))
+        {
+            Debug.Log("Destroyed");
+            isDestroyed = true;
+            Destroy(gameObject);
         }
     }
 }
