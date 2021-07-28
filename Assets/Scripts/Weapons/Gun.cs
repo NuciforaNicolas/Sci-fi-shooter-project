@@ -35,7 +35,10 @@ public class Gun : MonoBehaviour
     IEnumerator SpawnBullet()
     {
         canShoot = false;
-        Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
+        bullet = BulletManager.instance.GetBullet();
+        bullet.transform.position = spawnPoint.transform.position;
+        bullet.transform.rotation = spawnPoint.transform.rotation;
+        bullet.SetActive(true);
         bulletCounter++;
         yield return new WaitForSeconds(shootTime);
         canShoot = true;
@@ -46,10 +49,11 @@ public class Gun : MonoBehaviour
         transform.parent.transform.parent = null;
         rb.useGravity = true;
         rb.isKinematic = false;
+        GetComponent<CapsuleCollider>().isTrigger = false;
         rb.AddForce(transform.parent.forward * dropForce, ForceMode.Impulse);
         isDropped = true;
         StartCoroutine("SetCanPickUp");
-        Player.instance.SetHasGun(false);
+        InputManager.instance.hasGun = false;
     }
 
     IEnumerator SetCanPickUp()
@@ -62,6 +66,7 @@ public class Gun : MonoBehaviour
     {
         isDropped = false;
         rb.isKinematic = true;
+        GetComponent<CapsuleCollider>().isTrigger = true;
         rb.useGravity = false;
         canPickUp = false;
     }

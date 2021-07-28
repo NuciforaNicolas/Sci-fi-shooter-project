@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float speed;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }
@@ -19,6 +19,6 @@ public class Bullet : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
