@@ -4,27 +4,19 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] float minTimeToFall, maxTimeToFall, timeToChangeColor, fallSpeed;
+    [SerializeField] float timeToChangeColor, fallSpeed;
     [SerializeField] Color colorA, colorB;
     Renderer renderer;
-    float timeToFall, timerFall, timerChangeColor;
+    float timerChangeColor;
     bool isDestroyed;
 
     private void Awake()
     {
-        timeToFall = Random.Range(minTimeToFall, maxTimeToFall);
         renderer = GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
-    void Start()
+    public void StartFalling()
     {
-        StartCoroutine("StartFallCountdown");
-    }
-
-    IEnumerator StartFallCountdown()
-    {
-        yield return new WaitForSeconds(timeToFall);
         StartCoroutine("LerpColorPlatform");
     }
 
