@@ -13,5 +13,11 @@ public class Player : MonoBehaviour
         health = maxHealth;
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("DeathBorder"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
