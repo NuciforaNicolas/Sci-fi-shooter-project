@@ -170,8 +170,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &16591779
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -356,8 +357,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!65 &48315649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -420,8 +422,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &64636307
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -545,8 +548,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &72752183
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -670,8 +674,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &130766555
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -945,8 +950,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &209802213
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1070,8 +1076,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &223995930
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1195,8 +1202,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &236146228
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1320,8 +1328,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &236996722
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1538,8 +1547,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!65 &315348214
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1602,8 +1612,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &334671054
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1727,8 +1738,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &357234626
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1852,8 +1864,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &391035692
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1977,8 +1990,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &393024455
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2102,8 +2116,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &448762660
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2288,8 +2303,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!65 &481804594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2352,8 +2368,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &489658227
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2477,8 +2494,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &512594883
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2602,8 +2620,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &530233211
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2788,8 +2807,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &544317513
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2974,8 +2994,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!65 &625693552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3112,8 +3133,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &662788258
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3237,8 +3259,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &670896313
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3362,8 +3385,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &672025462
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3487,8 +3511,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &675420658
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3612,8 +3637,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &682980103
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3737,8 +3763,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &684451150
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3862,8 +3889,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &693129343
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4074,8 +4102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &720045286
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4231,8 +4260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &800241394
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4356,8 +4386,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &806839265
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4481,8 +4512,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &831903611
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4606,8 +4638,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &841087663
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4731,8 +4764,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &856074569
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4856,8 +4890,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &861493991
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4981,8 +5016,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &880508766
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5106,8 +5142,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &913022276
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5231,8 +5268,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &937699332
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5356,8 +5394,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &964330868
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5481,8 +5520,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &981145918
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5667,8 +5707,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!65 &1033743808
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5731,8 +5772,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1044598596
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5917,8 +5959,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!65 &1083242860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6042,8 +6085,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!65 &1096346920
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6106,8 +6150,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1112453555
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6231,8 +6276,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1126020155
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6493,8 +6539,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1173773944
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6618,8 +6665,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1188658062
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6743,8 +6791,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1196846739
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6914,8 +6963,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1272746819
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7039,8 +7089,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1298776080
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7164,8 +7215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1375621359
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7289,8 +7341,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1376809042
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7414,8 +7467,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1420782946
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7702,8 +7756,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1443717676
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7827,8 +7882,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1505366735
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7952,8 +8008,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1533419170
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8077,8 +8134,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1553063627
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8202,8 +8260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1557305358
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8427,8 +8486,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1596765636
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8552,8 +8612,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1618868532
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8677,8 +8738,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1650567135
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8802,8 +8864,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1659864354
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8927,8 +8990,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1676363373
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9052,8 +9116,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1690009148
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9177,8 +9242,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1776894630
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9302,8 +9368,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1783081697
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9617,8 +9684,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1891021339
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9803,8 +9871,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!65 &1906140128
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9867,8 +9936,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1931723176
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9992,8 +10062,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &1949259797
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10180,8 +10251,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &2004520631
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10305,8 +10377,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &2012745511
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10430,8 +10503,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &2042417489
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10555,8 +10629,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &2078539172
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10680,8 +10755,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &2078856803
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10805,8 +10881,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &2093368029
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11023,8 +11100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &2120311794
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11209,8 +11287,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!65 &2121375841
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11273,8 +11352,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &2135873747
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11398,8 +11478,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeColor: 5
   fallSpeed: 5
-  colorA: {r: 1, g: 1, b: 1, a: 0}
+  colorA: {r: 1, g: 1, b: 1, a: 1}
   colorB: {r: 1, g: 0, b: 0, a: 0}
+  maxHealth: 5
 --- !u!64 &2139015311
 MeshCollider:
   m_ObjectHideFlags: 0
