@@ -6,13 +6,18 @@ public class Platform : MonoBehaviour
 {
     [SerializeField] float timeToChangeColor, fallSpeed;
     [SerializeField] Color colorA, colorB;
+    [SerializeField] int maxHealth;
+    int currentHealth;
     Renderer renderer;
     float timerChangeColor;
     bool isDestroyed;
+    float colorAddictive;
 
     private void Awake()
     {
         renderer = GetComponent<Renderer>();
+        currentHealth = maxHealth;
+        colorAddictive = 1.0f / maxHealth;
     }
 
     public void StartFalling()
@@ -36,6 +41,14 @@ public class Platform : MonoBehaviour
         }
     }
 
+    void DecreaseHealth()
+    {
+        currentHealth--;
+        colorA = new Color(colorA.r, colorA.g - colorAddictive, colorA.b - colorAddictive);
+        renderer.material.color = colorA;
+        if (currentHealth <= 0) StartCoroutine("FallPlatform");
+    }
+
     IEnumerator FallPlatform()
     {
         while (!isDestroyed)
@@ -47,11 +60,15 @@ public class Platform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("DeathBorder"))
+        if (other.CompareTag("DeathBorder"))
         {
             Debug.Log("Destroyed");
             isDestroyed = true;
             Destroy(gameObject);
+        }
+        if (other.gameObject.layer.Equals("Explosive"))
+        {
+            DecreaseHealth();
         }
     }
 }
