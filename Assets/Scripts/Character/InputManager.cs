@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] float moveSpeed, jumpForce, dashDistance, timeToDash, rayCastMaxDistance;
+    [SerializeField] float moveSpeed, jumpForce, dashDistance, timeToDash, targetMaxDist, rayCastMaxDistance;
     [SerializeField] GameObject target;
     [SerializeField] Transform weaponSlot;
     [SerializeField] bool canDash;
@@ -68,7 +68,8 @@ public class InputManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayCastMaxDistance, 1 << 8))
         {
-            target.transform.position = new Vector3(hit.point.x, 0, hit.point.z);
+            Vector3 targetPos = new Vector3(transform.forward.x * targetMaxDist, 0, transform.forward.z * targetMaxDist);
+            target.transform.position = new Vector3(transform.position.x + targetPos.x, 1, transform.position.z + targetPos.z);
             transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
         }
     }
