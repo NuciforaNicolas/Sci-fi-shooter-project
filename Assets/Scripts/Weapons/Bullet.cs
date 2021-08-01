@@ -12,14 +12,14 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Move();
     }
 
     void Move()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Move(speed);
     }
 
     private void OnBecameInvisible()

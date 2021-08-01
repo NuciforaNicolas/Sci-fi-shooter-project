@@ -65,10 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Character\Player.cs" />
+    <Compile Include="Assets\Scripts\Drone\Drone.cs" />
     <Compile Include="Assets\Scripts\Environment\Platform.cs" />
     <Compile Include="Assets\Scripts\Managers\BulletManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlatformManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\SpawnWeaponManager.cs" />
+    <Compile Include="Assets\Scripts\Static\Extension.cs" />
     <Compile Include="Assets\Scripts\Weapons\Bullet.cs" />
     <Compile Include="Assets\Scripts\Weapons\Gun.cs" />
     <Reference Include="UnityEngine">

@@ -13,6 +13,12 @@ public class Gun : MonoBehaviour
     bool canShoot = true, isDropped;
     float bulletCounter = 0;
 
+    public enum GunType
+    {
+        Pistol, SMG, MG, Shotgun, Sniper, RocketLauncher, GranadeLauncher
+    }
+    [SerializeField] GunType gunType;
+
     private void Awake()
     {
         rb = transform.parent.GetComponent<Rigidbody>();
@@ -35,7 +41,7 @@ public class Gun : MonoBehaviour
     IEnumerator SpawnBullet()
     {
         canShoot = false;
-        bullet = BulletManager.instance.GetBullet(transform.parent.name);
+        bullet = BulletManager.instance.GetBullet(gunType.ToString());
         bullet.transform.position = spawnPoint.transform.position;
         bullet.transform.rotation = spawnPoint.transform.rotation;
         bullet.SetActive(true);
