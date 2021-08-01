@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] float speed, range, damage;
+
+    private void OnBecameVisible()
+    {
+        StartCoroutine("DisableCountdown");
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -21,4 +26,12 @@ public class Bullet : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    IEnumerator DisableCountdown()
+    {
+        yield return new WaitForSeconds(range);
+        gameObject.SetActive(false);
+    }
+
+    public float GetDamage() { return damage; }
 }
