@@ -6689,7 +6689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d23990e64c253408cf568fbbc5e11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletListSize: 200
   pistolBullet: {fileID: 2721250287386970524, guid: 42a2d46ff05963b4b88dd367d9c2eeca,
     type: 3}
   smgBullet: {fileID: 7225157869940858611, guid: 48eaea494aafff24384376080750c0b3,
@@ -6704,13 +6703,20 @@ MonoBehaviour:
     type: 3}
   granadeBullet: {fileID: 1180696331237592975, guid: fc70f82869766614a9ead0e075e896a8,
     type: 3}
-  pistol: {fileID: 1227366740}
-  smg: {fileID: 2112314767}
-  mg: {fileID: 541298089}
-  sniper: {fileID: 1837430055}
-  shotgun: {fileID: 1251366142}
-  rocket: {fileID: 740861158}
-  granade: {fileID: 929297649}
+  pistolContainer: {fileID: 1227366740}
+  smgContainer: {fileID: 2112314767}
+  mgContainer: {fileID: 541298089}
+  sniperContainer: {fileID: 1837430055}
+  shotgunContainer: {fileID: 1251366142}
+  rocketContainer: {fileID: 740861158}
+  granadeContainer: {fileID: 929297649}
+  pistolSize: 80
+  smgSize: 200
+  mgSize: 80
+  shotgunSize: 20
+  sniperSize: 16
+  rocketSize: 3
+  granadeSize: 3
 --- !u!1 &1157939285
 GameObject:
   m_ObjectHideFlags: 0

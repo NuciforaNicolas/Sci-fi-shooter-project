@@ -109,3 +109,4 @@ MonoBehaviour:
   speed: 20
   range: 1
   damage: 8
+  bulletType: 3

@@ -136,14 +136,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc2581555435542850c28629f0e36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bulletPrefab: {fileID: 1180696331237592975, guid: fc70f82869766614a9ead0e075e896a8,
+    type: 3}
   shootTime: 1
   dropForce: 2
   timeToPickUp: 2
-  timeToDestroy: 2
+  rimeToDeactive: 0
   magazineSize: 5
   spawnPoint: {fileID: 7445517349366532350}
-  canPickUp: 1
   gunType: 6
 --- !u!1 &7445517349680155888
 GameObject:
@@ -193,4 +193,4 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3

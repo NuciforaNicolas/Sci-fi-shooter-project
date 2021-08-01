@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] GameObject bullet;
-    [SerializeField] float shootTime, dropForce, timeToPickUp, timeToDestroy;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] float shootTime, dropForce, timeToPickUp, rimeToDeactive;
     [SerializeField] int magazineSize;
     [SerializeField] Transform spawnPoint;
-    [SerializeField] bool canPickUp;
     Rigidbody rb;
-    bool canShoot = true, isDropped;
+    GameObject gunBullet;
+    bool canShoot = true, isDropped, canPickUp = true;
     float bulletCounter = 0;
 
     public enum GunType
@@ -29,7 +29,7 @@ public class Gun : MonoBehaviour
         if (bulletCounter == magazineSize && !isDropped)
         {
             DropGun();
-            StartCoroutine("DestroyGun");
+            StartCoroutine("DeactiveGun");
         }
     }
 
@@ -41,10 +41,10 @@ public class Gun : MonoBehaviour
     IEnumerator SpawnBullet()
     {
         canShoot = false;
-        bullet = BulletManager.instance.GetBullet(gunType.ToString());
-        bullet.transform.position = spawnPoint.transform.position;
-        bullet.transform.rotation = spawnPoint.transform.rotation;
-        bullet.SetActive(true);
+        gunBullet = BulletManager.instance.GetBullet(bulletPrefab.GetComponent<Bullet>().GetBulletType());
+        gunBullet.transform.position = spawnPoint.transform.position;
+        gunBullet.transform.rotation = spawnPoint.transform.rotation;
+        gunBullet.SetActive(true);
         bulletCounter++;
         yield return new WaitForSeconds(shootTime);
         canShoot = true;
@@ -83,9 +83,9 @@ public class Gun : MonoBehaviour
         return canPickUp;
     }
 
-    IEnumerator DestroyGun()
+    IEnumerator DeactiveGun()
     {
-        yield return new WaitForSeconds(timeToDestroy);
-        Destroy(transform.parent.gameObject);
+        yield return new WaitForSeconds(rimeToDeactive);
+        transform.parent.gameObject.SetActive(false);
     }
 }
