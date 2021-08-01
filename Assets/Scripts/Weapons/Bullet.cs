@@ -6,6 +6,12 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float speed, range, damage;
 
+    public enum BulletType
+    {
+        PistolBullet, SMGBullet, MGBullet, ShotgunBullet, SniperBullet, RocketBullet, GranadeBullet
+    }
+    [SerializeField] BulletType bulletType;
+
     private void OnBecameVisible()
     {
         StartCoroutine("DisableCountdown");
@@ -34,4 +40,9 @@ public class Bullet : MonoBehaviour
     }
 
     public float GetDamage() { return damage; }
+
+    public string GetBulletType()
+    {
+        return bulletType.ToString();
+    }
 }

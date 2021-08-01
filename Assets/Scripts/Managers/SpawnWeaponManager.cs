@@ -27,7 +27,7 @@ public class SpawnWeaponManager : MonoBehaviour
     {
         instance = this;
         weaponsPools = new Dictionary<string, List<GameObject>>();
-        GenerateObjectPool();
+        GenerateWeaponPool();
         CreateDrone();
         spawnTime = Random.Range(minTimeSpawn, maxTimeSpawn);
         canSpawn = true;
@@ -64,7 +64,7 @@ public class SpawnWeaponManager : MonoBehaviour
         weapon.SetActive(true);
     }
 
-    void GenerateObjectPool()
+    void GenerateWeaponPool()
     {
         if(pistol && smg && mg && shotgun && sniper && rocket && granade /*&& melee*/)
         {
