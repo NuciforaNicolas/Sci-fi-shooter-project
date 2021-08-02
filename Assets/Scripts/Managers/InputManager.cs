@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] GameObject target;
     [SerializeField] Transform weaponSlot;
     [SerializeField] bool canDash;
-    Rigidbody rigidBody;
+    [SerializeField] Rigidbody rigidBody;
     Gun gun;
     Vector3 move;
     float horizontalMove, verticalMove, dashTimer;
@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
 
     void Awake()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        //rigidBody = GetComponent<Rigidbody>();
         dashTimer = 0;
         canDash = true;
     }
@@ -45,8 +45,11 @@ public class InputManager : MonoBehaviour
         //Movement START
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
-        move = new Vector3(horizontalMove, 0, verticalMove);
-        rigidBody.MovePosition(transform.position + move * moveSpeed * Time.deltaTime);
+        if(horizontalMove != 0 || verticalMove != 0)
+        {
+            move = new Vector3(horizontalMove, 0, verticalMove);
+            rigidBody.MovePosition(transform.position + move * moveSpeed * Time.deltaTime);
+        }
         //Movement END
     }
 
@@ -96,21 +99,20 @@ public class InputManager : MonoBehaviour
         canDash = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Platform")) isGrounded = true;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Gun") && !hasGun && other.transform.GetComponent<Gun>().CanPickUp())
+        if (other.gameObject.CompareTag("Gun") && !hasGun)
         {
-            other.transform.parent.transform.parent = weaponSlot.transform;
-            other.transform.parent.transform.position = weaponSlot.transform.position;
-            other.transform.parent.transform.rotation = weaponSlot.transform.rotation;
-            other.gameObject.GetComponent<Gun>().PickUp();
-            hasGun = true;
-            gun = other.gameObject.GetComponent<Gun>();
+            gun = other.transform.GetChild(0).GetComponent<Gun>(); //Se da errore, assicurarsi che il parent dell'arma abbia tag "gun" mentre i figli siano untagged
+            if (gun.CanPickUp())
+            {
+                other.transform.parent = weaponSlot.transform;
+                other.transform.position = weaponSlot.transform.position;
+                other.transform.rotation = weaponSlot.transform.rotation;
+                gun.PickUp();
+                hasGun = true;
+            }
         }
+        if (other.transform.CompareTag("Platform") && !isGrounded) isGrounded = true;
     }
 }

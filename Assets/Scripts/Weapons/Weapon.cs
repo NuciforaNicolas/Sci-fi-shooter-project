@@ -17,12 +17,19 @@ public class Weapon : MonoBehaviour, IWeapon
     protected bool canShoot = true, isDropped, canPickUp = true;
     protected float bulletCounter = 0;
 
+    protected virtual void Awake()
+    {
+        rb = transform.parent.GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
+    }
+
     public virtual void Shoot() { }
     public virtual void DropGun() {
         collider.isTrigger = false;
         transform.parent.transform.parent = SpawnWeaponManager.instance.GetWeaponContainer(GetWeaponType());
         rb.useGravity = true;
         rb.isKinematic = false;
+        rb.AddForce(transform.parent.forward * dropForce, ForceMode.Impulse);
         isDropped = true;
         StartCoroutine("SetCanPickUp");
         InputManager.instance.hasGun = false;

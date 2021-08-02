@@ -8,11 +8,6 @@ public class Gun : Weapon, IWeapon
     [SerializeField] Transform spawnPoint;
     GameObject gunBullet;
 
-    private void Awake()
-    {
-        rb = transform.parent.GetComponent<Rigidbody>();
-    }
-
     private void FixedUpdate()
     {
         if (bulletCounter == magazineSize && !isDropped)
