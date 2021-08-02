@@ -6,9 +6,9 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] float moveSpeed, jumpForce, dashDistance, timeToDash, targetMaxDist, rayCastMaxDistance;
     [SerializeField] GameObject target;
-    [SerializeField] Transform weaponSlot;
+    [SerializeField] Transform weaponSlot, bodyTranform;
     [SerializeField] bool canDash;
-    [SerializeField] Rigidbody rigidBody;
+    Rigidbody rigidBody;
     Gun gun;
     Vector3 move;
     float horizontalMove, verticalMove, dashTimer;
@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
 
     void Awake()
     {
-        //rigidBody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();
         dashTimer = 0;
         canDash = true;
     }
@@ -69,7 +69,7 @@ public class InputManager : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, rayCastMaxDistance))
+        if (Physics.Raycast(ray, out hit, rayCastMaxDistance)) //da rendere efficiente considerando solo i layer necessari
         {
             Vector3 targetPos;
             if(Vector3.Distance(hit.point, transform.position) <= targetMaxDist)
@@ -78,7 +78,7 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                targetPos = new Vector3(transform.position.x + (transform.forward.x * targetMaxDist), 1, transform.position.z + (transform.forward.z * targetMaxDist));
+                targetPos = new Vector3(bodyTranform.position.x + (bodyTranform.forward.x * targetMaxDist), 1, bodyTranform.position.z + (bodyTranform.forward.z * targetMaxDist));
             }
             //target.transform.position = new Vector3(transform.position.x + targetPos.x, 1, transform.position.z + targetPos.z);
             target.transform.position = targetPos;
@@ -103,7 +103,7 @@ public class InputManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Gun") && !hasGun)
         {
-            gun = other.transform.GetChild(0).GetComponent<Gun>(); //Se da errore, assicurarsi che il parent dell'arma abbia tag "gun" mentre i figli siano untagged
+            gun = other.transform.GetComponent<Gun>(); //Se da errore, assicurarsi che il parent dell'arma abbia tag "gun" mentre i figli siano untagged
             if (gun.CanPickUp())
             {
                 other.transform.parent = weaponSlot.transform;

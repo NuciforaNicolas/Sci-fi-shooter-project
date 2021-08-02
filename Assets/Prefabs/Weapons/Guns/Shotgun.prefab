@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 7445517349474406794}
   - component: {fileID: 7445517349474406797}
   - component: {fileID: 8991806009036901038}
-  - component: {fileID: 7445517349474406795}
   m_Layer: 9
   m_Name: GunBody
   m_TagString: Untagged
@@ -124,28 +123,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7445517349474406795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7445517349474406798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc2581555435542850c28629f0e36a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootTime: 0.8
-  dropForce: 5
-  timeToPickUp: 2
-  timeToDeactive: 2
-  magazineSize: 10
-  collider: {fileID: 8991806009036901038}
-  weaponType: 3
-  bulletPrefab: {fileID: 1180696331237592975, guid: 48bb1f4f6b8393741a8885a6f27a1fc0,
-    type: 3}
-  spawnPoint: {fileID: 7445517349366532350}
 --- !u!1 &7445517349680155888
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +134,7 @@ GameObject:
   - component: {fileID: 7445517349680155889}
   - component: {fileID: 7445517349680155886}
   - component: {fileID: 4074369576275653086}
+  - component: {fileID: 7784127041428021111}
   m_Layer: 9
   m_Name: Shotgun
   m_TagString: Gun
@@ -204,8 +182,30 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7445517349680155888}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7784127041428021111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445517349680155888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cc2581555435542850c28629f0e36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootTime: 0.8
+  dropForce: 5
+  timeToPickUp: 2
+  timeToDeactive: 2
+  magazineSize: 10
+  collider: {fileID: 8991806009036901038}
+  weaponType: 3
+  bulletPrefab: {fileID: 1180696331237592975, guid: 48bb1f4f6b8393741a8885a6f27a1fc0,
+    type: 3}
+  spawnPoint: {fileID: 7445517349366532350}

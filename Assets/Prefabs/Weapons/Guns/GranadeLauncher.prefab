@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 7445517349474406794}
   - component: {fileID: 7445517349474406797}
   - component: {fileID: 793911916676652671}
-  - component: {fileID: 7445517349474406795}
   m_Layer: 9
   m_Name: GunBody
   m_TagString: Untagged
@@ -124,28 +123,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0000002, z: 1.0000002}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7445517349474406795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7445517349474406798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc2581555435542850c28629f0e36a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootTime: 1
-  dropForce: 5
-  timeToPickUp: 2
-  timeToDeactive: 2
-  magazineSize: 5
-  collider: {fileID: 793911916676652671}
-  weaponType: 6
-  bulletPrefab: {fileID: 1180696331237592975, guid: fc70f82869766614a9ead0e075e896a8,
-    type: 3}
-  spawnPoint: {fileID: 7445517349366532350}
 --- !u!1 &7445517349680155888
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +134,7 @@ GameObject:
   - component: {fileID: 7445517349680155889}
   - component: {fileID: 7445517349680155886}
   - component: {fileID: 8618978962548441444}
+  - component: {fileID: 6308802944923304436}
   m_Layer: 9
   m_Name: GranadeLauncher
   m_TagString: Gun
@@ -209,3 +187,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6308802944923304436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445517349680155888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cc2581555435542850c28629f0e36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootTime: 1
+  dropForce: 5
+  timeToPickUp: 2
+  timeToDeactive: 2
+  magazineSize: 5
+  collider: {fileID: 793911916676652671}
+  weaponType: 6
+  bulletPrefab: {fileID: 1180696331237592975, guid: fc70f82869766614a9ead0e075e896a8,
+    type: 3}
+  spawnPoint: {fileID: 7445517349366532350}
