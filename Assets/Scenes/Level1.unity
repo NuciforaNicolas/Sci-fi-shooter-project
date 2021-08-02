@@ -4445,6 +4445,8 @@ GameObject:
   m_Component:
   - component: {fileID: 778250930}
   - component: {fileID: 778250931}
+  - component: {fileID: 778250933}
+  - component: {fileID: 778250932}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -4484,6 +4486,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &778250932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778250929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90d9aa3be45721428f30aa1b8173b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  jumpForce: 5
+  dashDistance: 10
+  timeToDash: 2
+  targetMaxDist: 5
+  rayCastMaxDistance: 100
+  target: {fileID: 1816958167}
+  weaponSlot: {fileID: 1559236423}
+  bodyTranform: {fileID: 1426566505}
+  canDash: 0
+--- !u!114 &778250933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778250929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda2166c0070c2b4ebd3c6e2a93ecc30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
 --- !u!1 &800241391
 GameObject:
   m_ObjectHideFlags: 0
@@ -8037,8 +8074,6 @@ GameObject:
   - component: {fileID: 1426566510}
   - component: {fileID: 1426566509}
   - component: {fileID: 1426566512}
-  - component: {fileID: 1426566506}
-  - component: {fileID: 1426566508}
   m_Layer: 2
   m_Name: PlayerBody
   m_TagString: Player
@@ -8062,41 +8097,6 @@ Transform:
   m_Father: {fileID: 778250930}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1426566506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426566504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dda2166c0070c2b4ebd3c6e2a93ecc30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
---- !u!114 &1426566508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426566504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c90d9aa3be45721428f30aa1b8173b6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  jumpForce: 5
-  dashDistance: 10
-  timeToDash: 2
-  targetMaxDist: 5
-  rayCastMaxDistance: 100
-  target: {fileID: 1816958167}
-  weaponSlot: {fileID: 1559236423}
-  canDash: 0
-  rigidBody: {fileID: 778250931}
 --- !u!136 &1426566509
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8825,7 +8825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559236422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.068, y: 0.3308395, z: 0.65}
+  m_LocalPosition: {x: -0.068, y: 0.3308395, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1426566505}
