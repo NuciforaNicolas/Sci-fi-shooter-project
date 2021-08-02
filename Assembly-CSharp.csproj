@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Character\Player.cs" />
     <Compile Include="Assets\Scripts\Drone\Drone.cs" />
     <Compile Include="Assets\Scripts\Environment\Platform.cs" />
+    <Compile Include="Assets\Scripts\Interface\IWeapon.cs" />
     <Compile Include="Assets\Scripts\Managers\BulletManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlatformManager.cs" />

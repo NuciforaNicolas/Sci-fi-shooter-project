@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : MonoBehaviour, IWeapon
 {
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float shootTime, dropForce, timeToPickUp, rimeToDeactive;

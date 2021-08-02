@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7445517349474406794}
   - component: {fileID: 7445517349474406797}
   - component: {fileID: 8313407879247209801}
+  - component: {fileID: 8088426887094357846}
   - component: {fileID: 7445517349474406795}
   m_Layer: 0
   m_Name: GunBody
@@ -124,6 +125,19 @@ CapsuleCollider:
   m_Radius: 0.38
   m_Height: 2.0000002
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &8088426887094357846
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445517349474406798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 1.0000002}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7445517349474406795
 MonoBehaviour:
