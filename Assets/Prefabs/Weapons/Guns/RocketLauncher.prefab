@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7445517349366532350}
   m_Layer: 9
   m_Name: SpawnPoint
-  m_TagString: Gun
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,12 +41,11 @@ GameObject:
   - component: {fileID: 7445517349474406799}
   - component: {fileID: 7445517349474406794}
   - component: {fileID: 7445517349474406797}
-  - component: {fileID: 6624340495837756957}
   - component: {fileID: 2764839832320978262}
   - component: {fileID: 7445517349474406795}
   m_Layer: 9
   m_Name: GunBody
-  m_TagString: Gun
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,19 +111,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6624340495837756957
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7445517349474406798}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 2, z: 1.0000002}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &2764839832320978262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -170,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7445517349680155889}
   - component: {fileID: 7445517349680155886}
+  - component: {fileID: 2788376824259188707}
   m_Layer: 9
   m_Name: RocketLauncher
   m_TagString: Gun
@@ -209,3 +196,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 3
+--- !u!65 &2788376824259188707
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445517349680155888}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

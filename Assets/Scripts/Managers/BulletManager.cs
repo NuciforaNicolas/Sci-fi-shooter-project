@@ -66,15 +66,13 @@ public class BulletManager : MonoBehaviour
 
     public GameObject GetBullet(List<GameObject> bulletList)
     {
-        while (true)
+        for (int i = 0; i < bulletList.Count; i++)
         {
-            for (int i = 0; i < bulletList.Count; i++)
+            if (!bulletList[i].activeInHierarchy)
             {
-                if (!bulletList[i].activeInHierarchy)
-                {
-                    return bulletList[i];
-                }
+                return bulletList[i];
             }
-        }       
+        }
+        return null;
     }
 }

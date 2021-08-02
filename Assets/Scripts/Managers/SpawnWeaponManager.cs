@@ -52,8 +52,11 @@ public class SpawnWeaponManager : MonoBehaviour
         var degree = Random.Range(minSpawnDegree, maxSpawnDegree);
         droneInstance.transform.Rotate(0, spawnPos.transform.rotation.y + degree,0);
         GameObject weapon = GetRandomWeapon();
-        SetDroneWeapon(ref weapon);
-        droneInstance.SetActive(true);
+        if (weapon != null)
+        {
+            SetDroneWeapon(ref weapon);
+            droneInstance.SetActive(true);
+        }
     }
 
     void SetDroneWeapon(ref GameObject weapon)
@@ -117,18 +120,16 @@ public class SpawnWeaponManager : MonoBehaviour
 
     public GameObject GetRandomWeapon()
     {
-        while (true)
+        List<string> keys = Enumerable.ToList(weaponsPools.Keys);
+        List<GameObject> selectedWeaponList = weaponsPools[keys[Random.Range(0, keys.Count)]];
+        for (int i = 0; i < selectedWeaponList.Count; i++)
         {
-            List<string> keys = Enumerable.ToList(weaponsPools.Keys);
-            List<GameObject> selectedWeaponList = weaponsPools[keys[Random.Range(0, keys.Count)]];
-            for (int i = 0; i < selectedWeaponList.Count; i++)
+            if (!selectedWeaponList[i].activeInHierarchy)
             {
-                if (!selectedWeaponList[i].activeInHierarchy)
-                {
-                    return selectedWeaponList[i];
-                }
+                return selectedWeaponList[i];
             }
         }
+        return null;
     }
 
     public Transform GetWeaponContainer(string gunType)
