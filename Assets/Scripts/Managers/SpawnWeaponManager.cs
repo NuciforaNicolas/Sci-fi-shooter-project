@@ -16,10 +16,10 @@ public class SpawnWeaponManager : MonoBehaviour
 
 
     Dictionary<string, List<GameObject>> weaponsPools;
+    Dictionary<string, Transform> weaponContainer;
     float spawnDegree, spawnTime;
     GameObject droneInstance;
     public bool canSpawn { get; set; }
-    public Transform lastContainer { get; set; }
     public static SpawnWeaponManager instance;
 
     // Start is called before the first frame update
@@ -27,6 +27,7 @@ public class SpawnWeaponManager : MonoBehaviour
     {
         instance = this;
         weaponsPools = new Dictionary<string, List<GameObject>>();
+        weaponContainer = new Dictionary<string, Transform>();
         GenerateWeaponPool();
         CreateDrone();
         spawnTime = Random.Range(minTimeSpawn, maxTimeSpawn);
@@ -77,6 +78,14 @@ public class SpawnWeaponManager : MonoBehaviour
             weaponsPools.Add(granade.name, new List<GameObject>(granadeSize));
             //aggiungere melee
 
+            weaponContainer.Add(pistol.name, pistolContainer);
+            weaponContainer.Add(smg.name, smgContainer);
+            weaponContainer.Add(mg.name, mgContainer);
+            weaponContainer.Add(shotgun.name, shotgunContainer);
+            weaponContainer.Add(sniper.name, sniperContainer);
+            weaponContainer.Add(rocket.name, rocketContainer);
+            weaponContainer.Add(granade.name, granadeContainer);
+
             FillList(weaponsPools[pistol.name], pistolSize, pistol, pistolContainer);
             FillList(weaponsPools[smg.name], smgSize, smg, smgContainer);
             FillList(weaponsPools[mg.name], mgSize, mg, mgContainer);
@@ -116,10 +125,14 @@ public class SpawnWeaponManager : MonoBehaviour
             {
                 if (!selectedWeaponList[i].activeInHierarchy)
                 {
-                    lastContainer = selectedWeaponList[i].transform.parent;
                     return selectedWeaponList[i];
                 }
             }
         }
+    }
+
+    public Transform GetWeaponContainer(string gunType)
+    {
+        return weaponContainer[gunType];
     }
 }
