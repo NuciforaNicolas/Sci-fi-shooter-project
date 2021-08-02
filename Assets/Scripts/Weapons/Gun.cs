@@ -2,22 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour, IWeapon
+public class Gun : Weapon, IWeapon
 {
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] float shootTime, dropForce, timeToPickUp, rimeToDeactive;
-    [SerializeField] int magazineSize;
     [SerializeField] Transform spawnPoint;
-    Rigidbody rb;
     GameObject gunBullet;
-    bool canShoot = true, isDropped, canPickUp = true;
-    float bulletCounter = 0;
-
-    public enum GunType
-    {
-        Pistol, SMG, MG, Shotgun, Sniper, RocketLauncher, GranadeLauncher
-    }
-    [SerializeField] GunType gunType;
 
     private void Awake()
     {
@@ -33,7 +22,7 @@ public class Gun : MonoBehaviour, IWeapon
         }
     }
 
-    public void Shoot()
+    public override void Shoot()
     {
         if(canShoot && bulletCounter < magazineSize) StartCoroutine("SpawnBullet");
     }
@@ -50,42 +39,30 @@ public class Gun : MonoBehaviour, IWeapon
         canShoot = true;
     }
 
-    public void DropGun()
+    public override void DropGun()
     {
-        transform.parent.transform.parent = null;
-        rb.useGravity = true;
-        rb.isKinematic = false;
-        GetComponent<Collider>().isTrigger = false;
-        rb.AddForce(transform.parent.forward * dropForce, ForceMode.Impulse);
-        isDropped = true;
-        StartCoroutine("SetCanPickUp");
-        InputManager.instance.hasGun = false;
+        base.DropGun();
     }
 
-    IEnumerator SetCanPickUp()
+    protected IEnumerator SetCanPickUp()
     {
         yield return new WaitForSeconds(timeToPickUp);
         canPickUp = bulletCounter < magazineSize ? true : false;
     }
 
-    public void PickUp()
+    public override void PickUp()
     {
-        isDropped = false;
-        rb.isKinematic = true;
-        GetComponent<Collider>().isTrigger = true;
-        rb.useGravity = false;
-        canPickUp = false;
-        Debug.Log("Gun: " + transform.parent.name);
+        base.PickUp();
     }
 
-    public bool CanPickUp()
+    public override bool CanPickUp()
     {
-        return canPickUp;
+        return base.CanPickUp();
     }
 
     IEnumerator DeactiveGun()
     {
-        yield return new WaitForSeconds(rimeToDeactive);
+        yield return new WaitForSeconds(timeToDeactive);
         transform.parent.gameObject.SetActive(false);
     }
 }
