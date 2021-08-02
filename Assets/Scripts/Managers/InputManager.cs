@@ -66,10 +66,19 @@ public class InputManager : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, rayCastMaxDistance, 1 << 8))
+        if (Physics.Raycast(ray, out hit, rayCastMaxDistance))
         {
-            Vector3 targetPos = new Vector3(transform.forward.x * targetMaxDist, 0, transform.forward.z * targetMaxDist);
-            target.transform.position = new Vector3(transform.position.x + targetPos.x, 1, transform.position.z + targetPos.z);
+            Vector3 targetPos;
+            if(Vector3.Distance(hit.point, transform.position) <= targetMaxDist)
+            {
+                targetPos = hit.point;
+            }
+            else
+            {
+                targetPos = new Vector3(transform.position.x + (transform.forward.x * targetMaxDist), 1, transform.position.z + (transform.forward.z * targetMaxDist));
+            }
+            //target.transform.position = new Vector3(transform.position.x + targetPos.x, 1, transform.position.z + targetPos.z);
+            target.transform.position = targetPos;
             transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
         }
     }
@@ -77,8 +86,6 @@ public class InputManager : MonoBehaviour
     void Dash()
     {
         canDash = false;
-        //Vector3 dashVelocity = Vector3.Scale(transform.forward, dashDistance * new Vector3((Mathf.Log(1f / (Time.deltaTime * rigidBody.drag + 1)) / -Time.deltaTime), 0, (Mathf.Log(1f / (Time.deltaTime * rigidBody.drag + 1)) / -Time.deltaTime)));
-        //rigidBody.AddForce(dashVelocity, ForceMode.VelocityChange);
         rigidBody.MovePosition(transform.position + move * dashDistance);
         StartCoroutine("DashCoolDown");
     }

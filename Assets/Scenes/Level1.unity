@@ -4444,7 +4444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 778250930}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -8023,7 +8023,7 @@ GameObject:
   - component: {fileID: 1426566506}
   - component: {fileID: 1426566508}
   - component: {fileID: 1426566512}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerBody
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -8809,7 +8809,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1559236423}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WeaponSlot
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -11588,7 +11588,7 @@ GameObject:
   - component: {fileID: 2104972163}
   - component: {fileID: 2104972162}
   - component: {fileID: 2104972161}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7445517349474406794}
   - component: {fileID: 7445517349474406797}
   - component: {fileID: 2242986344634072892}
+  - component: {fileID: 6624340495837756957}
   - component: {fileID: 7445517349474406795}
   m_Layer: 0
   m_Name: GunBody
@@ -59,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 7445517349474406798}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.30120608, y: 0.7909421, z: 0.23198077}
+  m_LocalScale: {x: 0.36953306, y: 0.6755199, z: 0.27069837}
   m_Children: []
   m_Father: {fileID: 7445517349680155889}
   m_RootOrder: 0
@@ -123,6 +124,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0000001, z: 1.0000002}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6624340495837756957
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445517349474406798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 2, z: 1.0000002}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7445517349474406795
 MonoBehaviour:

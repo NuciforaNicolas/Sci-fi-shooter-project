@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     {
         if (other.transform.CompareTag("DeathBorder"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
