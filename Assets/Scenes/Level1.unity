@@ -4498,9 +4498,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90d9aa3be45721428f30aa1b8173b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 15
   jumpForce: 5
-  dashDistance: 10
+  dashDistance: 500
   timeToDash: 2
   targetMaxDist: 5
   rayCastMaxDistance: 100
