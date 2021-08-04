@@ -15,9 +15,9 @@
                 },
                 {
                     "name": "Shoot",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "e1d72cbd-2ce3-4143-98c5-5dfbeab09b0b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
@@ -112,67 +112,67 @@
                 },
                 {
                     "name": "",
-                    "id": "447881ba-accf-46c8-b9ce-4dc22981f424",
-                    "path": "<Mouse>/leftButton",
+                    "id": "c995614a-86d1-45b0-b461-3e3230591709",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardMouse",
+                    "groups": "Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed49cd6d-e6e5-4a55-a2e1-94282705d343",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "bf8e01db-076a-445a-a146-4b801924f00b",
-                    "path": "<Keyboard>/space",
+                    "id": "1c449db5-51c3-4078-aa1a-e7110fefe39e",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0ff3710b-11c0-4594-b42e-e23fac78ff6d",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
+                    "groups": "Gamepad",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "ab5c3c54-23d8-4ad1-84d7-cc1193589c27",
-                    "path": "<Keyboard>/q",
+                    "id": "c91b3b47-ac47-4ab8-b371-8fb5474d3ae9",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "DropGun",
+                    "groups": "Gamepad",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "6f074392-32bf-4755-89da-0ab2bb95aad0",
-                    "path": "<Keyboard>/leftShift",
+                    "id": "74c3ca72-2662-4e9e-a150-831de0907110",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardMouse",
+                    "groups": "Gamepad",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "8dd5d88a-bf42-4964-814c-de1534180ecf",
-                    "path": "<Mouse>/position",
+                    "id": "0a0e4a6c-8143-4f90-81d5-1f5e545b8fb3",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Aim",
+                    "groups": "",
+                    "action": "DropGun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -191,6 +191,17 @@
                 },
                 {
                     "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
                 }
