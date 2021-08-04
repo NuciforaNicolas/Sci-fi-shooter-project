@@ -6,25 +6,27 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] float moveSpeed, rotationSpeed, jumpForce, dashDistance, timeToDash, targetMaxDist, rayCastMaxDistance;
+    [SerializeField] float moveSpeed, rotationSpeed, jumpForce, dashDistance, timeToDash, targetMaxDist, rayCastMaxDistance, timeToUnstun;
     [SerializeField] GameObject target;
     [SerializeField] Transform weaponSlot, bodyTranform;
     [SerializeField] bool canDash;
     PlayerController controller; //Input system
     Rigidbody rigidBody;
     Gun gun;
+    Player player;
     Vector3 move, targetPos;
     Vector2 inputMove, inputAim; //informazione presa da input system
     float horizontalMove, verticalMove;
-    bool isGrounded, isShooting, isDashing;
-    public bool hasGun { get; set; }
+    bool isGrounded, isShooting, isDashing, enableControl, hasGun, isStunned;
     public static InputManager instance;
 
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
         controller = new PlayerController();
+        player = GetComponent<Player>();
         canDash = true;
+        enableControl = true;
 
         //input system - move START
         controller.Player.Move.performed += ctx => inputMove = ctx.ReadValue<Vector2>();
@@ -50,6 +52,45 @@ public class InputManager : MonoBehaviour
 
         //input system - DropGun
         controller.Player.DropGun.performed += ctx => DropGun();
+
+        //TO REMOVE
+        controller.Player.Damage.performed += ctx => TakeDamage();
+        controller.Player.Unstun.performed += ctx => StartUnstun();
+        controller.Player.Unstun.canceled += ctx => EndUnstun();
+    }
+
+    //TEST
+    void TakeDamage()
+    {
+        player.GetDamage(1f);
+    }
+
+    void StartUnstun()
+    {
+        if (player.GetIsStunned()) StartCoroutine("StartUnstunTimer");
+    }
+
+    IEnumerator StartUnstunTimer()
+    {
+        var timer = 0f;
+        while(timer < timeToUnstun)
+        {
+            timer += Time.deltaTime;
+            Debug.Log("Unstun timer: " + timer);
+            yield return null;
+        }
+        player.SetIsStunned(false);
+        player.Unstun();
+        enableControl = true;
+    }
+
+    void EndUnstun()
+    {
+        if (player.GetIsStunned())
+        {
+            StopCoroutine("StartUnstunTimer");
+            
+        }
     }
 
     private void Start()
@@ -60,17 +101,19 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Aim();
-        Move();
-        if(hasGun && isShooting) Shoot();
-        if (isDashing && canDash) Dash();
-
-        /* OLD INPUT SYSTEM - START
-            if (Input.GetKey(KeyCode.Mouse0)) Shoot();
-            if (Input.GetKey(KeyCode.Q) && hasGun) gun.DropGun();
-            if (Input.GetKey(KeyCode.Space)) Jump();
-            if (Input.GetKey(KeyCode.LeftShift) && canDash) Dash();
-           OLD INPUT SYSTEM - END*/
+        if (enableControl)
+        {
+            Aim();
+            Move();
+            if (hasGun && isShooting) Shoot();
+            if (isDashing && canDash) Dash();
+            /* OLD INPUT SYSTEM - START
+                if (Input.GetKey(KeyCode.Mouse0)) Shoot();
+                if (Input.GetKey(KeyCode.Q) && hasGun) gun.DropGun();
+                if (Input.GetKey(KeyCode.Space)) Jump();
+                if (Input.GetKey(KeyCode.LeftShift) && canDash) Dash();
+               OLD INPUT SYSTEM - END*/
+        }
     }
 
     void Move()
@@ -188,6 +231,26 @@ public class InputManager : MonoBehaviour
             }
         }
         if (other.transform.CompareTag("Platform") && !isGrounded) isGrounded = true;
+    }
+
+    public void SetHasGun(bool hasGun)
+    {
+        this.hasGun = hasGun;
+    }
+
+    public bool GetHasGun()
+    {
+        return hasGun;
+    }
+
+    public void SetEnableControl(bool enableControl)
+    {
+        this.enableControl = enableControl;
+    }
+
+    public bool GetEnableControl()
+    {
+        return enableControl;
     }
 
     //Input System - Enablle Input System 

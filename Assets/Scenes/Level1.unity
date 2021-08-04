@@ -4815,6 +4815,7 @@ MonoBehaviour:
   timeToDash: 2
   targetMaxDist: 5
   rayCastMaxDistance: 100
+  timeToUnstun: 5
   target: {fileID: 1816958167}
   weaponSlot: {fileID: 1559236423}
   bodyTranform: {fileID: 1426566505}

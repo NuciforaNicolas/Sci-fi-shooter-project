@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour, IWeapon
         rb.AddForce(transform.forward * dropForce, ForceMode.Impulse);
         isDropped = true;
         StartCoroutine("SetCanPickUp");
-        InputManager.instance.hasGun = false;
+        InputManager.instance.SetHasGun(false);
     }
     public virtual void PickUp() {
         isDropped = false;
