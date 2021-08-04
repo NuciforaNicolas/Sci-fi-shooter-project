@@ -6,16 +6,16 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] float moveSpeed, jumpForce, dashDistance, timeToDash, targetMaxDist, rayCastMaxDistance;
+    [SerializeField] float moveSpeed, rotationSpeed, jumpForce, dashDistance, timeToDash, targetMaxDist, rayCastMaxDistance;
     [SerializeField] GameObject target;
     [SerializeField] Transform weaponSlot, bodyTranform;
     [SerializeField] bool canDash;
-    [SerializeField] PlayerController controller; //Input system
+    PlayerController controller; //Input system
     Rigidbody rigidBody;
     Gun gun;
-    Vector3 move;
-    Vector2 inputMove, inputMousePosition; //informazione presa da input system
-    float horizontalMove, verticalMove, dashTimer;
+    Vector3 move, targetPos;
+    Vector2 inputMove, inputAim; //informazione presa da input system
+    float horizontalMove, verticalMove;
     bool isGrounded, isShooting, isDashing;
     public bool hasGun { get; set; }
     public static InputManager instance;
@@ -24,7 +24,6 @@ public class InputManager : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         controller = new PlayerController();
-        dashTimer = 0;
         canDash = true;
 
         //input system - move START
@@ -33,7 +32,8 @@ public class InputManager : MonoBehaviour
         //input system - move END
 
         //input system - aim START
-        controller.Player.Aim.performed += ctx => inputMousePosition = ctx.ReadValue<Vector2>();
+        controller.Player.Aim.performed += ctx => inputAim = ctx.ReadValue<Vector2>();
+        controller.Player.Aim.canceled += ctx => inputAim = Vector2.zero;
         //input system - aim END
 
         //input system - fire START
@@ -85,7 +85,13 @@ public class InputManager : MonoBehaviour
         verticalMove = inputMove.y; //input system - essendo vector2, l'asse z corrisponde all'asse y di input system
 
         move = new Vector3(horizontalMove, 0, verticalMove);
-        rigidBody.MovePosition(transform.position + move * moveSpeed * Time.deltaTime);
+        var nextPos = transform.position + move * moveSpeed * Time.deltaTime;
+        rigidBody.MovePosition(nextPos);
+        if(inputAim == Vector2.zero && move != Vector3.zero)
+        {
+            var targetRotation = Quaternion.LookRotation(nextPos - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
         //Movement END
     }
 
@@ -112,16 +118,25 @@ public class InputManager : MonoBehaviour
 
     void Aim()
     {
+        if(inputAim == Vector2.zero)
+        {
+            if(target.activeInHierarchy) target.SetActive(false);
+            return;
+        }
+
+        if (!target.activeInHierarchy) target.SetActive(true);
+
+        //KEYBOARD CONTROLS - START
+        /*
         RaycastHit hit;
         //Input System
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(inputMousePosition.x, inputMousePosition.y, 0));
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(inputAim.x, inputAim.y, 0));
 
         //Old Input System
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, rayCastMaxDistance)) //da rendere efficiente considerando solo i layer necessari
         {
-            Vector3 targetPos;
             if(Vector3.Distance(hit.point, transform.position) <= targetMaxDist)
             {
                 targetPos = hit.point;
@@ -134,6 +149,15 @@ public class InputManager : MonoBehaviour
             target.transform.position = targetPos;
             transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
         }
+        */
+        //KEYBOARD CONTROLS - END
+
+        //TOUCH AND GAMEPAD CONTROL - START
+        Debug.Log("GAMEPAD: " + inputAim);
+        targetPos = new Vector3(bodyTranform.position.x + (inputAim.x * targetMaxDist), 1, bodyTranform.position.z + (inputAim.y * targetMaxDist));
+        target.transform.position = targetPos;
+        transform.LookAt(new Vector3(targetPos.x, transform.position.y, targetPos.z));
+        //TOUCH AND GAMEPAD CONTRO - END
     }
 
     void Dash()
