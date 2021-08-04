@@ -65,6 +65,22 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Damage"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1d4a1fe-69c9-4fd8-b8e3-083f42126a5a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Unstun"",
+                    ""type"": ""Button"",
+                    ""id"": ""d048985c-9bd7-4a0d-907d-1e39b986fd0b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -188,6 +204,28 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""action"": ""DropGun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""984198f0-d054-4230-8a3c-539058a87957"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Damage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95e4d82c-e72e-4562-ac8a-c572cfd08e34"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Unstun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -230,6 +268,8 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_Player_DropGun = m_Player.FindAction("DropGun", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_Damage = m_Player.FindAction("Damage", throwIfNotFound: true);
+        m_Player_Unstun = m_Player.FindAction("Unstun", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -285,6 +325,8 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_DropGun;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_Damage;
+    private readonly InputAction m_Player_Unstun;
     public struct PlayerActions
     {
         private @PlayerController m_Wrapper;
@@ -295,6 +337,8 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @DropGun => m_Wrapper.m_Player_DropGun;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @Damage => m_Wrapper.m_Player_Damage;
+        public InputAction @Unstun => m_Wrapper.m_Player_Unstun;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -322,6 +366,12 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Damage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDamage;
+                @Damage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDamage;
+                @Damage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDamage;
+                @Unstun.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnstun;
+                @Unstun.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnstun;
+                @Unstun.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnstun;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -344,6 +394,12 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @Damage.started += instance.OnDamage;
+                @Damage.performed += instance.OnDamage;
+                @Damage.canceled += instance.OnDamage;
+                @Unstun.started += instance.OnUnstun;
+                @Unstun.performed += instance.OnUnstun;
+                @Unstun.canceled += instance.OnUnstun;
             }
         }
     }
@@ -374,5 +430,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnDropGun(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnDamage(InputAction.CallbackContext context);
+        void OnUnstun(InputAction.CallbackContext context);
     }
 }

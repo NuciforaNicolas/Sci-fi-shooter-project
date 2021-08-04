@@ -52,6 +52,22 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Damage",
+                    "type": "Button",
+                    "id": "e1d4a1fe-69c9-4fd8-b8e3-083f42126a5a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Unstun",
+                    "type": "Button",
+                    "id": "d048985c-9bd7-4a0d-907d-1e39b986fd0b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -173,6 +189,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "DropGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "984198f0-d054-4230-8a3c-539058a87957",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Damage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95e4d82c-e72e-4562-ac8a-c572cfd08e34",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Unstun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
