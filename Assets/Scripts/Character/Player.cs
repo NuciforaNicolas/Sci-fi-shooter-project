@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
         if (other.transform.CompareTag("DeathBorder"))
         {
             gameObject.SetActive(false);
+            GameManager.instance.RestartLevel();
         }
     }
 }

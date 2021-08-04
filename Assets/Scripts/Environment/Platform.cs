@@ -62,7 +62,6 @@ public class Platform : MonoBehaviour
     {
         if (other.CompareTag("DeathBorder"))
         {
-            Debug.Log("Destroyed");
             isDestroyed = true;
             Destroy(gameObject);
         }
