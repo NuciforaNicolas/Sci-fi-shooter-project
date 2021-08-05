@@ -50,8 +50,8 @@ public class Drone : MonoBehaviour
             Rigidbody weaponRb = weapon.GetComponent<Rigidbody>();
             weaponRb.isKinematic = false;
             string weaponType = weapon.transform.GetComponent<Gun>().GetWeaponType();
-            Transform par = SpawnWeaponManager.instance.GetWeaponContainer(weaponType);
-            weapon.transform.parent = par;
+            Transform container = SpawnWeaponManager.instance.GetWeaponContainer(weaponType);
+            weapon.transform.parent = container;
         }
     }
 }

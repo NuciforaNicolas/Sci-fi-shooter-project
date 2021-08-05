@@ -48,5 +48,4 @@ public class Weapon : MonoBehaviour, IWeapon
     {
         return weaponType.ToString();
     }
-
 }

@@ -142,26 +142,45 @@ public class SpawnWeaponManager : MonoBehaviour
     {
         string selectedWeapon;
         List<GameObject> selectedWeaponList;
-        while (slotsFull <= weaponPoolKeys.Count())
+        while (slotsFull < weaponPoolKeys.Count())
         {
             selectedWeapon = weaponPoolKeys[Random.Range(0, weaponPoolKeys.Count)];
-            if (weaponSpawnedCounter[selectedWeapon] <= 0) { slotsFull++; continue; }
+            if (weaponSpawnedCounter[selectedWeapon] == 0) continue;
             selectedWeaponList = weaponsPools[selectedWeapon];
             for (int i = 0; i < selectedWeaponList.Count; i++)
             {
                 if (!selectedWeaponList[i].activeInHierarchy)
                 {
-                    if (weaponSpawnedCounter[selectedWeapon] == 1) slotsFull -= Mathf.Clamp(slotsFull, 0, 1);
-                    weaponSpawnedCounter[selectedWeapon]--;
+                    DecreaseWeaponCounter(selectedWeapon);
                     return selectedWeaponList[i];
                 }
-                else
+
+                if(weaponSpawnedCounter[selectedWeapon] == 0)
                 {
-                    weaponSpawnedCounter[selectedWeapon]++;
+                    IncreaseWeaponCounter(selectedWeapon);
                 }
             }
         }
         return null;
+    }
+
+    public void IncreaseWeaponCounter(string weaponType)
+    {
+        if(weaponSpawnedCounter[weaponType] == 0)
+        {
+            slotsFull--;
+            if (slotsFull == 1 && !canSpawn) canSpawn = true;
+        }
+        weaponSpawnedCounter[weaponType]++;
+    }
+
+    public void DecreaseWeaponCounter(string weaponType)
+    {
+        weaponSpawnedCounter[weaponType]--;
+        if (weaponSpawnedCounter[weaponType] == 0)
+        {
+            slotsFull++;
+        }
     }
 
     public Transform GetWeaponContainer(string gunType)

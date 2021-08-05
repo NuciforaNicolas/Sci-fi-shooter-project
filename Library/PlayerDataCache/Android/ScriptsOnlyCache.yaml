@@ -24,6 +24,7 @@ ScriptsOnlyBuild:
     - UnityEngine.InputSystem.InputSystemObject
     - UnityEngine.InputSystem.OnScreen.OnScreenButton
     - UnityEngine.InputSystem.OnScreen.OnScreenStick
+    - UnityEngine.InputSystem.PlayerInput
     - UnityEngine.InputSystem.RemoteInputPlayerConnection
     - UnityEngine.InputSystem.UI.InputSystemUIInputModule
     Unity.RenderPipelines.Core.Runtime.dll:
@@ -173,6 +174,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12950}
     - Class: 114
       Script: {instanceID: 12984}
+    - Class: 114
+      Script: {instanceID: 13040}
     - Class: 114
       Script: {instanceID: 13236}
     - Class: 114
