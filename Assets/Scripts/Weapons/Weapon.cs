@@ -27,18 +27,19 @@ public class Weapon : MonoBehaviour, IWeapon
     public virtual void DropGun() {
         collider.isTrigger = false;
         transform.parent = SpawnWeaponManager.instance.GetWeaponContainer(GetWeaponType());
-        rb.useGravity = true;
+        //rb.useGravity = true;
         rb.isKinematic = false;
         rb.AddForce(transform.forward * dropForce, ForceMode.Impulse);
         isDropped = true;
         StartCoroutine("SetCanPickUp");
         InputManager.instance.SetHasGun(false);
+        SpawnWeaponManager.instance.IncreaseWeaponCounter(weaponType.ToString());
     }
     public virtual void PickUp() {
         isDropped = false;
         rb.isKinematic = true;
         collider.isTrigger = true;
-        rb.useGravity = false;
+        //rb.useGravity = false;
         canPickUp = false;
         Debug.Log("Gun: " + transform.parent.name);
     }
