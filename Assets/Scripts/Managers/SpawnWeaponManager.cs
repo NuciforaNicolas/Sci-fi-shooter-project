@@ -22,7 +22,7 @@ public class SpawnWeaponManager : MonoBehaviour
     float spawnDegree, spawnTime;
     public int slotsFull;
     GameObject droneInstance;
-    public bool canSpawn { get; set; }
+    bool canSpawn;
     public static SpawnWeaponManager instance;
 
     // Start is called before the first frame update
@@ -169,7 +169,7 @@ public class SpawnWeaponManager : MonoBehaviour
         if(weaponSpawnedCounter[weaponType] == 0)
         {
             slotsFull--;
-            if (slotsFull == 1 && !canSpawn) canSpawn = true;
+            if (slotsFull == weaponPoolKeys.Count() - 1 && !canSpawn) canSpawn = true;
         }
         weaponSpawnedCounter[weaponType]++;
     }
@@ -186,5 +186,15 @@ public class SpawnWeaponManager : MonoBehaviour
     public Transform GetWeaponContainer(string gunType)
     {
         return weaponContainer[gunType];
+    }
+
+    public bool GetCanSpawn()
+    {
+        return canSpawn;
+    }
+
+    public void SetCanSpawn(bool canSpawn)
+    {
+        this.canSpawn = canSpawn;
     }
 }

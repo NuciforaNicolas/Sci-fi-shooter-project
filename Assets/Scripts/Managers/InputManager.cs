@@ -96,11 +96,11 @@ public class InputManager : MonoBehaviour
         if (enableControl)
         {
             Aim();
-            Move();
+            if(inputMove != Vector2.zero)Move();
             if (hasGun && isShooting) Shoot();
             if (playerInput.actions["Dash"].triggered && canDash) Dash();
             if (playerInput.actions["Jump"].triggered) Jump();
-            if (playerInput.actions["DropGun"].triggered && hasGun) gun.DropGun();
+            if (playerInput.actions["DropGun"].triggered && hasGun) DropGun();
             if (playerInput.actions["Damage"].triggered) TakeDamage();
             /* OLD INPUT SYSTEM - START
                 if (Input.GetKey(KeyCode.Mouse0)) Shoot();
@@ -251,12 +251,12 @@ public class InputManager : MonoBehaviour
     //Input System - Enablle Input System 
     private void OnEnable()
     {
-        controller.Player.Enable();
+        if(controller != null) controller.Enable();
     }
 
     //Input System - Disablle Input System
     private void OnDisable()
     {
-        controller.Player.Disable();
+        if(controller != null) controller.Disable();
     }
 }
