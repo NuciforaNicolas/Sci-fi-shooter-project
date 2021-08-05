@@ -13,10 +13,10 @@ public class Drone : MonoBehaviour
     {
         if (!lockCountDown) DeactiveDrone();
         transform.Move(speed);
-        
-        if(Physics.Raycast(transform.position, -transform.up, out var hit, rayCastMaxDist, 1 << 8))
+
+        if (Physics.Raycast(transform.position, -transform.up, out var hit, rayCastMaxDist, 1 << 8))
         {
-           if(!lockDrop && hit.transform.CompareTag("Platform")) DropWeapon();
+            if (!lockDrop && hit.transform.CompareTag("Platform")) DropWeapon();
         }
     }
 
@@ -40,20 +40,18 @@ public class Drone : MonoBehaviour
         lockCountDown = false;
         lockDrop = false;
     }
-
     IEnumerator LetDropWeapon()
     {
         yield return new WaitForSeconds(timeToDrop);
         GameObject weapon = weaponSlot.GetChild(0).gameObject; //WeaponSlot -> Weapon
         Debug.Log("Drone Slot: " + weapon.name);
-        if (weapon != null)  
+        if (weapon != null)
         {
             Rigidbody weaponRb = weapon.GetComponent<Rigidbody>();
             weaponRb.isKinematic = false;
-            weaponRb.useGravity = true;
             string weaponType = weapon.transform.GetComponent<Gun>().GetWeaponType();
-            Transform par = SpawnWeaponManager.instance.GetWeaponContainer(weaponType);
-            weapon.transform.parent = par;
+            Transform container = SpawnWeaponManager.instance.GetWeaponContainer(weaponType);
+            weapon.transform.parent = container;
         }
     }
 }

@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] bool canDash;
     PlayerController controller; //Input system
     Rigidbody rigidBody;
+    PlayerInput playerInput;
     Gun gun;
     Player player;
     Vector3 move, targetPos;
@@ -25,8 +26,10 @@ public class InputManager : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         controller = new PlayerController();
         player = GetComponent<Player>();
-        canDash = true;
+        playerInput = GetComponent<PlayerInput>();
+        //canDash = true;
         enableControl = true;
+        canDash = true;
 
         //input system - move START
         controller.Player.Move.performed += ctx => inputMove = ctx.ReadValue<Vector2>();
@@ -38,23 +41,12 @@ public class InputManager : MonoBehaviour
         controller.Player.Aim.canceled += ctx => inputAim = Vector2.zero;
         //input system - aim END
 
-        //input system - fire START
+        //input system - shoot START
         controller.Player.Shoot.performed += ctx => isShooting = true;
         controller.Player.Shoot.canceled += ctx => isShooting = false;
-        //input system - fire END
-
-        //input system - jump
-        controller.Player.Jump.performed += ctx => Jump();
-
-        //input system - Dash
-        controller.Player.Dash.performed += ctx => isDashing = true;
-        controller.Player.Dash.canceled += ctx => isDashing = false;
-
-        //input system - DropGun
-        controller.Player.DropGun.performed += ctx => DropGun();
+        //input system - shoot START
 
         //TO REMOVE
-        controller.Player.Damage.performed += ctx => TakeDamage();
         controller.Player.Unstun.performed += ctx => StartUnstun();
         controller.Player.Unstun.canceled += ctx => EndUnstun();
     }
@@ -106,7 +98,10 @@ public class InputManager : MonoBehaviour
             Aim();
             Move();
             if (hasGun && isShooting) Shoot();
-            if (isDashing && canDash) Dash();
+            if (playerInput.actions["Dash"].triggered && canDash) Dash();
+            if (playerInput.actions["Jump"].triggered) Jump();
+            if (playerInput.actions["DropGun"].triggered && hasGun) gun.DropGun();
+            if (playerInput.actions["Damage"].triggered) TakeDamage();
             /* OLD INPUT SYSTEM - START
                 if (Input.GetKey(KeyCode.Mouse0)) Shoot();
                 if (Input.GetKey(KeyCode.Q) && hasGun) gun.DropGun();
@@ -196,7 +191,6 @@ public class InputManager : MonoBehaviour
         //KEYBOARD CONTROLS - END
 
         //TOUCH AND GAMEPAD CONTROL - START
-        Debug.Log("GAMEPAD: " + inputAim);
         targetPos = new Vector3(bodyTranform.position.x + (inputAim.x * targetMaxDist), 1, bodyTranform.position.z + (inputAim.y * targetMaxDist));
         target.transform.position = targetPos;
         transform.LookAt(new Vector3(targetPos.x, transform.position.y, targetPos.z));
@@ -206,6 +200,7 @@ public class InputManager : MonoBehaviour
     void Dash()
     {
         canDash = false;
+        Debug.Log("Can Dash: " + canDash);
         rigidBody.MovePosition(transform.position + move * dashDistance * Time.deltaTime);
         StartCoroutine("DashCoolDown");
     }

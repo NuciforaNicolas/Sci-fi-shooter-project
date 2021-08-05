@@ -58,6 +58,7 @@ public class Gun : Weapon, IWeapon
     IEnumerator DeactiveGun()
     {
         yield return new WaitForSeconds(timeToDeactive);
-        transform.parent.gameObject.SetActive(false);
+        SpawnWeaponManager.instance.IncreaseWeaponCounter(weaponType.ToString());
+        gameObject.SetActive(false); 
     }
 }

@@ -33,7 +33,6 @@ public class Weapon : MonoBehaviour, IWeapon
         isDropped = true;
         StartCoroutine("SetCanPickUp");
         InputManager.instance.SetHasGun(false);
-        SpawnWeaponManager.instance.IncreaseWeaponCounter(weaponType.ToString());
     }
     public virtual void PickUp() {
         isDropped = false;
@@ -49,5 +48,4 @@ public class Weapon : MonoBehaviour, IWeapon
     {
         return weaponType.ToString();
     }
-
 }
