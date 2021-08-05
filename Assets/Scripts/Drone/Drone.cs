@@ -35,10 +35,10 @@ public class Drone : MonoBehaviour
     IEnumerator CountDown()
     {
         yield return new WaitForSeconds(timeToDeactive);
-        gameObject.SetActive(false);
-        SpawnWeaponManager.instance.canSpawn = true;
+        SpawnWeaponManager.instance.SetCanSpawn(true);
         lockCountDown = false;
         lockDrop = false;
+        gameObject.SetActive(false);  
     }
     IEnumerator LetDropWeapon()
     {
