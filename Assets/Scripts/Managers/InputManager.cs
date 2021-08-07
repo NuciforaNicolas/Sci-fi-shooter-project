@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -96,7 +97,7 @@ public class InputManager : MonoBehaviour
         if (enableControl)
         {
             Aim();
-            if(inputMove != Vector2.zero)Move();
+            Move();
             if (hasGun && isShooting) Shoot();
             if (playerInput.actions["Dash"].triggered && canDash) Dash();
             if (playerInput.actions["Jump"].triggered) Jump();
