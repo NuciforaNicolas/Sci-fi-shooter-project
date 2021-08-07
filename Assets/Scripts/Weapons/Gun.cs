@@ -13,7 +13,7 @@ public class Gun : Weapon, IWeapon
         if (bulletCounter == magazineSize && !isDropped)
         {
             DropGun();
-            StartCoroutine("DeactiveGun");
+            StartCoroutine(nameof(DeactiveGun));
         }
     }
 
@@ -39,12 +39,6 @@ public class Gun : Weapon, IWeapon
         base.DropGun();
     }
 
-    protected IEnumerator SetCanPickUp()
-    {
-        yield return new WaitForSeconds(timeToPickUp);
-        canPickUp = bulletCounter < magazineSize ? true : false;
-    }
-
     public override void PickUp()
     {
         base.PickUp();
@@ -53,12 +47,5 @@ public class Gun : Weapon, IWeapon
     public override bool CanPickUp()
     {
         return base.CanPickUp();
-    }
-
-    IEnumerator DeactiveGun()
-    {
-        yield return new WaitForSeconds(timeToDeactive);
-        SpawnWeaponManager.instance.IncreaseWeaponCounter(weaponType.ToString());
-        gameObject.SetActive(false); 
     }
 }

@@ -14,13 +14,17 @@ public class Weapon : MonoBehaviour, IWeapon
     [SerializeField] protected WeaponType weaponType;
 
     protected Rigidbody rb;
-    protected bool canShoot = true, isDropped, canPickUp = true;
-    protected float bulletCounter = 0;
+    protected bool canShoot, isDropped;
+    [SerializeField] protected bool canPickUp;
+    protected float bulletCounter;
 
     protected virtual void Awake()
     {
         rb = transform.GetComponent<Rigidbody>();
         collider = transform.GetChild(0).GetComponent<Collider>();
+        canPickUp = true;
+        canShoot = true;
+        bulletCounter = 0;
     }
 
     public virtual void Shoot() { }
@@ -47,5 +51,25 @@ public class Weapon : MonoBehaviour, IWeapon
     public string GetWeaponType()
     {
         return weaponType.ToString();
+    }
+
+    protected IEnumerator SetCanPickUp()
+    {
+        yield return new WaitForSeconds(timeToPickUp);
+        canPickUp = bulletCounter < magazineSize ? true : false;
+    }
+
+    protected IEnumerator DeactiveGun()
+    {
+        yield return new WaitForSeconds(timeToDeactive);
+        SpawnWeaponManager.instance.IncreaseWeaponCounter(weaponType.ToString());      
+        gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        canPickUp = true;
+        canShoot = true;
+        bulletCounter = 0;
     }
 }
