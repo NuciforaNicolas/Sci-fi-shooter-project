@@ -67,6 +67,7 @@
     <Compile Include="Assets\InputSystem Actions\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Character\Player.cs" />
     <Compile Include="Assets\Scripts\Drone\Drone.cs" />
+    <Compile Include="Assets\Scripts\Environment\DeathBorder.cs" />
     <Compile Include="Assets\Scripts\Environment\Platform.cs" />
     <Compile Include="Assets\Scripts\Interface\IWeapon.cs" />
     <Compile Include="Assets\Scripts\Managers\BulletManager.cs" />

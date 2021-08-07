@@ -60,11 +60,6 @@ public class Platform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("DeathBorder"))
-        {
-            isDestroyed = true;
-            Destroy(gameObject);
-        }
         if (other.gameObject.layer.Equals("Explosive"))
         {
             DecreaseHealth();

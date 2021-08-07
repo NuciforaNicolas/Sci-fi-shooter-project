@@ -59,13 +59,4 @@ public class Player : MonoBehaviour
     public bool GetIsStunned() { return isStunned; }
 
     public void SetIsStunned(bool isStunned) { this.isStunned = isStunned; }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.CompareTag("DeathBorder"))
-        {
-            gameObject.SetActive(false);
-            GameManager.instance.RestartLevel();
-        }
-    }
 }
