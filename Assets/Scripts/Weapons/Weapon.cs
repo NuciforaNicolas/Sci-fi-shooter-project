@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Managers;
 
 public class Weapon : MonoBehaviour, IWeapon
 {
@@ -30,7 +31,7 @@ public class Weapon : MonoBehaviour, IWeapon
     public virtual void Shoot() { }
     public virtual void DropGun() {
         collider.isTrigger = false;
-        transform.parent = SpawnWeaponManager.instance.GetWeaponContainer(GetWeaponType());
+        transform.parent = SpawnWeaponManager.instance.GetWeaponContainer();
         //rb.useGravity = true;
         rb.isKinematic = false;
         rb.AddForce(transform.forward * dropForce, ForceMode.Impulse);
@@ -59,10 +60,15 @@ public class Weapon : MonoBehaviour, IWeapon
         canPickUp = bulletCounter < magazineSize ? true : false;
     }
 
-    protected IEnumerator DeactiveGun()
+    protected IEnumerator StartDeactiveGunTimer()
     {
         yield return new WaitForSeconds(timeToDeactive);
-        SpawnWeaponManager.instance.IncreaseWeaponCounter(weaponType.ToString());      
+        DeactiveGun();
+    }
+
+    public void DeactiveGun()
+    {
+        SpawnWeaponManager.instance.IncreaseWeaponCounter(weaponType.ToString() + 's');
         gameObject.SetActive(false);
     }
 
