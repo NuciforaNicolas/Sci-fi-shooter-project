@@ -4739,7 +4739,6 @@ GameObject:
   - component: {fileID: 746444828}
   - component: {fileID: 746444827}
   - component: {fileID: 746444826}
-  - component: {fileID: 746444825}
   - component: {fileID: 746444830}
   m_Layer: 0
   m_Name: Camera
@@ -4748,18 +4747,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &746444825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746444824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb69030f322ee5944ae2a445fad844e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &746444826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4850,8 +4837,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746444824}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 42, z: -54}
+  m_LocalRotation: {x: 0.44305605, y: 0, z: 0, w: 0.8964939}
+  m_LocalPosition: {x: 0, y: 26.420612, z: -19.436886}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4866,14 +4853,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 746444824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetworkInstanceId: 0
-  PrefabHash: 11374044282181877456
-  PrefabHashGenerator: Camera
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &800241391
 GameObject:
   m_ObjectHideFlags: 0
@@ -7344,34 +7348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d23990e64c253408cf568fbbc5e11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pistolBullet: {fileID: 2721250287386970524, guid: 42a2d46ff05963b4b88dd367d9c2eeca,
-    type: 3}
-  smgBullet: {fileID: 7225157869940858611, guid: 48eaea494aafff24384376080750c0b3,
-    type: 3}
-  mgBullet: {fileID: 3808371076017640436, guid: d13794c800ab4514889681083023ea39,
-    type: 3}
-  sniperBullet: {fileID: 1180696331237592975, guid: 705279c589566764d9515af99808cccc,
-    type: 3}
-  shotgunBullet: {fileID: 1180696331237592975, guid: 48bb1f4f6b8393741a8885a6f27a1fc0,
-    type: 3}
-  rocketBullet: {fileID: 1180696331237592975, guid: 03cba6bb54ca5d1499399ce218253d76,
-    type: 3}
-  granadeBullet: {fileID: 1180696331237592975, guid: fc70f82869766614a9ead0e075e896a8,
-    type: 3}
-  pistolContainer: {fileID: 1227366740}
-  smgContainer: {fileID: 2112314767}
-  mgContainer: {fileID: 541298089}
-  sniperContainer: {fileID: 1837430055}
-  shotgunContainer: {fileID: 1251366142}
-  rocketContainer: {fileID: 740861158}
-  granadeContainer: {fileID: 929297649}
-  pistolSize: 80
-  smgSize: 200
-  mgSize: 80
-  shotgunSize: 20
-  sniperSize: 16
-  rocketSize: 3
-  granadeSize: 3
+  pools: []
+  container: {fileID: 0}
 --- !u!1 &1157939285
 GameObject:
   m_ObjectHideFlags: 0
@@ -8343,28 +8321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drone: {fileID: 5325731020261218067, guid: e164b2b702f56d34493d415a3eefa338, type: 3}
-  pistol: {fileID: 7445517349680155888, guid: 1ea598b4e26cc4f40b3c500e9c959458, type: 3}
-  smg: {fileID: 7445517349680155888, guid: d53346e2b3ef3fd4485a53f66c720d9c, type: 3}
-  mg: {fileID: 7445517349680155888, guid: 5d422682a61e63846b86adcde5e5c707, type: 3}
-  shotgun: {fileID: 7445517349680155888, guid: 6bfca1048cb9a57459fb45d16e1d916f, type: 3}
-  sniper: {fileID: 7445517349680155888, guid: 1f91859983f238341a809f9dd091e25f, type: 3}
-  rocket: {fileID: 7445517349680155888, guid: 095e7c9894b1ae746b6bd00a603983a1, type: 3}
-  granade: {fileID: 7445517349680155888, guid: c2d0332285d5f1b4cafc12ec601b8376, type: 3}
-  pistolSize: 5
-  smgSize: 5
-  mgSize: 3
-  shotgunSize: 3
-  sniperSize: 2
-  rocketSize: 1
-  granadeSize: 1
-  droneContainer: {fileID: 166847701}
-  pistolContainer: {fileID: 1779273407}
-  smgContainer: {fileID: 124720443}
-  mgContainer: {fileID: 141673810}
-  shotgunContainer: {fileID: 2050745846}
-  sniperContainer: {fileID: 81357399}
-  rocketContainer: {fileID: 629391835}
-  granadeContainer: {fileID: 222274041}
+  pools: []
   spawnPositions:
   - {fileID: 162230557}
   - {fileID: 39314868}
@@ -8374,7 +8331,10 @@ MonoBehaviour:
   maxTimeSpawn: 5
   minSpawnDegree: -20
   maxSpawnDegree: 20
+  weaponContainer: {fileID: 0}
+  droneContainer: {fileID: 166847701}
   slotsFull: 0
+  canSpawn: 0
 --- !u!1 &1375621356
 GameObject:
   m_ObjectHideFlags: 0

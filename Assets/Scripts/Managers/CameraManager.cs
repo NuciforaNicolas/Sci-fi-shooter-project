@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using MLAPI;
 using UnityEngine;
 
-public class Camera : NetworkBehaviour
+public class CameraManager : NetworkBehaviour
 {
+    [SerializeField] CinemachineVirtualCamera playerCamera;
     private void Start()
     {
         if (IsLocalPlayer) return;
-        gameObject.SetActive(false);
+
+        playerCamera.enabled = false;
     }
 }
