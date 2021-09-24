@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Managers;
 
 public class Gun : Weapon, IWeapon
 {
@@ -13,7 +14,7 @@ public class Gun : Weapon, IWeapon
         if (bulletCounter == magazineSize && !isDropped)
         {
             DropGun();
-            StartCoroutine("DeactiveGun");
+            StartCoroutine(nameof(StartDeactiveGunTimer));
         }
     }
 
@@ -25,7 +26,7 @@ public class Gun : Weapon, IWeapon
     IEnumerator SpawnBullet()
     {
         canShoot = false;
-        gunBullet = BulletManager.instance.GetBullet(bulletPrefab.GetComponent<Bullet>().GetBulletType());
+        gunBullet = BulletManager.instance.GetBullet(bulletPrefab.GetComponent<Bullet>().GetBulletType() + 's'); //Es. PistolBullet + s = PistolBullets (passed to BulletManager to refer map)
         gunBullet.transform.position = spawnPoint.transform.position;
         gunBullet.transform.rotation = spawnPoint.transform.rotation;
         gunBullet.SetActive(true);
@@ -39,12 +40,6 @@ public class Gun : Weapon, IWeapon
         base.DropGun();
     }
 
-    protected IEnumerator SetCanPickUp()
-    {
-        yield return new WaitForSeconds(timeToPickUp);
-        canPickUp = bulletCounter < magazineSize ? true : false;
-    }
-
     public override void PickUp()
     {
         base.PickUp();
@@ -53,12 +48,5 @@ public class Gun : Weapon, IWeapon
     public override bool CanPickUp()
     {
         return base.CanPickUp();
-    }
-
-    IEnumerator DeactiveGun()
-    {
-        yield return new WaitForSeconds(timeToDeactive);
-        SpawnWeaponManager.instance.IncreaseWeaponCounter(weaponType.ToString());
-        gameObject.SetActive(false); 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Managers;
 
 public class Drone : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class Drone : MonoBehaviour
             Rigidbody weaponRb = weapon.GetComponent<Rigidbody>();
             weaponRb.isKinematic = false;
             string weaponType = weapon.transform.GetComponent<Gun>().GetWeaponType();
-            Transform container = SpawnWeaponManager.instance.GetWeaponContainer(weaponType);
+            Transform container = SpawnWeaponManager.instance.GetWeaponContainer();
             weapon.transform.parent = container;
         }
     }
