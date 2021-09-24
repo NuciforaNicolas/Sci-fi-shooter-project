@@ -12,11 +12,6 @@ public class Bullet : MonoBehaviour
     }
     [SerializeField] BulletType bulletType;
 
-    private void OnBecameVisible()
-    {
-        StartCoroutine("DisableCountdown");
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -26,11 +21,6 @@ public class Bullet : MonoBehaviour
     void Move()
     {
         transform.Move(speed);
-    }
-
-    private void OnBecameInvisible()
-    {
-        gameObject.SetActive(false);
     }
 
     IEnumerator DisableCountdown()
@@ -44,5 +34,10 @@ public class Bullet : MonoBehaviour
     public string GetBulletType()
     {
         return bulletType.ToString();
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine("DisableCountdown");
     }
 }
