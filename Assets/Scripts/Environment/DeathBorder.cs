@@ -8,5 +8,6 @@ public class DeathBorder : MonoBehaviour
     {
         other.gameObject.SetActive(false);
         if (other.CompareTag("Player")) GameManager.instance.RestartLevel();
+        if (other.gameObject.layer == LayerMask.NameToLayer("Weapon")) other.GetComponent<Weapon>().DeactiveGun();
     }
 }

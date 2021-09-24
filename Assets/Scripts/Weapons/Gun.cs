@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Managers;
 
 public class Gun : Weapon, IWeapon
 {
@@ -13,7 +14,7 @@ public class Gun : Weapon, IWeapon
         if (bulletCounter == magazineSize && !isDropped)
         {
             DropGun();
-            StartCoroutine(nameof(DeactiveGun));
+            StartCoroutine(nameof(StartDeactiveGunTimer));
         }
     }
 
@@ -25,7 +26,7 @@ public class Gun : Weapon, IWeapon
     IEnumerator SpawnBullet()
     {
         canShoot = false;
-        gunBullet = BulletManager.instance.GetBullet(bulletPrefab.GetComponent<Bullet>().GetBulletType());
+        gunBullet = BulletManager.instance.GetBullet(bulletPrefab.GetComponent<Bullet>().GetBulletType() + 's'); //Es. PistolBullet + s = PistolBullets (passed to BulletManager to refer map)
         gunBullet.transform.position = spawnPoint.transform.position;
         gunBullet.transform.rotation = spawnPoint.transform.rotation;
         gunBullet.SetActive(true);
