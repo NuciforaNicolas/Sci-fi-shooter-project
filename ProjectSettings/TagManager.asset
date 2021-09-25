@@ -7,9 +7,11 @@ TagManager:
   - Gun
   - Platform
   - DeathBorder
+  - GenericBullet
+  - ExplosiveBullet
+  - MG
   - Pistol
   - SMG
-  - MG
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Platform
   - Weapon
   - Player
-  - 
+  - Bullet
   - 
   - 
   - 
