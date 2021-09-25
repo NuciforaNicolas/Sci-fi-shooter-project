@@ -1,16 +1,21 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using MLAPI;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
-public class CameraManager : NetworkBehaviour
+namespace Managers
 {
-    [SerializeField] CinemachineVirtualCamera playerCamera;
-    private void Start()
+    public class CameraManager : MonoBehaviourPunCallbacks
     {
-        if (IsLocalPlayer) return;
+        [SerializeField] CinemachineVirtualCamera playerCamera;
+        [SerializeField] PhotonView photonView;
+        private void Start()
+        {
+            if (photonView.IsMine) return;
 
-        playerCamera.enabled = false;
+            playerCamera.enabled = false;
+        }
     }
 }
