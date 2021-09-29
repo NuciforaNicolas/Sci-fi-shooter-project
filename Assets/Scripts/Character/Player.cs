@@ -12,7 +12,6 @@ namespace Character
         #region Private Fields
         [SerializeField] float maxHealth;
         Rigidbody rigidbody;
-        PhotonView photonView;
         float health;
         bool isStunned;
         #endregion
@@ -25,9 +24,9 @@ namespace Character
         // Start is called before the first frame update
         void Awake()
         {
+            if (!photonView.IsMine) return;
             health = maxHealth;
             rigidbody = GetComponent<Rigidbody>();
-            photonView = GetComponent<PhotonView>();
             isStunned = false;
             //used by GameManager: we keep track of the local player instance to prevent instantiation when levels are synchronized
             if (photonView.IsMine) Character.Player.localPlayerInstance = this.gameObject;
@@ -56,7 +55,9 @@ namespace Character
             health -= damage;
             if (health <= 0)
             {
-                GetStunned();
+                //GetStunned();
+                DebugManager.instance.Log("" + PhotonNetwork.NickName + " was killed");
+                GameManager.instance.RestartLevel();
             }
         }
 
@@ -88,11 +89,16 @@ namespace Character
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!photonView.IsMine) return;
+            if (!photonView.IsMine)
+            {
+                Debug.Log("I'm local player and should not receive damage from myself");
+                return;
+            }
             if(other.gameObject.layer.Equals(LayerMask.NameToLayer("Bullet")))
             {
                 GetDamage(other.GetComponent<Bullet>().GetDamage());
-                Debug.Log("Hit: " + health);
+                other.GetComponent<Bullet>().DeactiveBullet();
+                DebugManager.instance.Log("" + PhotonNetwork.NickName + " hitted: " + health);
             }
         }
 

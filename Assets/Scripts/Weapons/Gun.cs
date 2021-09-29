@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Managers;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class Gun : Weapon, IWeapon
 {
@@ -10,7 +12,8 @@ public class Gun : Weapon, IWeapon
     GameObject gunBullet;
 
     private void FixedUpdate()
-    {
+    {   if (!PhotonNetwork.IsMasterClient) return;
+        
         if (bulletCounter == magazineSize && !isDropped)
         {
             DropGun();
@@ -29,7 +32,7 @@ public class Gun : Weapon, IWeapon
         gunBullet = BulletManager.instance.GetBullet(bulletPrefab.GetComponent<Bullet>().GetBulletType() + 's'); //Es. PistolBullet + s = PistolBullets (passed to BulletManager to refer map)
         gunBullet.transform.position = spawnPoint.transform.position;
         gunBullet.transform.rotation = spawnPoint.transform.rotation;
-        gunBullet.SetActive(true);
+        gunBullet.GetComponent<Bullet>().ActiveBullet();
         bulletCounter++;
         yield return new WaitForSeconds(shootTime);
         canShoot = true;

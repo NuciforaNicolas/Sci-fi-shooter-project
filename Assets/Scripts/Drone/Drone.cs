@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Managers;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class Drone : MonoBehaviour
+public class Drone : MonoBehaviourPunCallbacks
 {
     [SerializeField] float speed, timeToDeactive, timeToDrop, rayCastMaxDist;
     [SerializeField] Transform weaponSlot;
@@ -12,7 +14,9 @@ public class Drone : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!lockCountDown) DeactiveDrone();
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        if (!lockCountDown) DeactiveDroneWithCountdown();
         transform.Move(speed);
 
         if (Physics.Raycast(transform.position, -transform.up, out var hit, rayCastMaxDist, 1 << 8))
@@ -21,10 +25,33 @@ public class Drone : MonoBehaviour
         }
     }
 
-    void DeactiveDrone()
+    public void ActiveDrone()
+    {
+        Debug.Log("Drone: calling ActiveDroneRPC");
+        photonView.RPC(nameof(ActiveDroneRPC), RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    void ActiveDroneRPC()
+    {
+        gameObject.SetActive(true);
+    }
+
+    void DeactiveDroneWithCountdown()
     {
         lockCountDown = true;
         StartCoroutine("CountDown");
+    }
+
+    public void DeactiveDrone()
+    {
+        photonView.RPC(nameof(DeactiveDroneRPC), RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    void DeactiveDroneRPC()
+    {
+        gameObject.SetActive(false);   
     }
 
     void DropWeapon()
@@ -39,7 +66,7 @@ public class Drone : MonoBehaviour
         SpawnWeaponManager.instance.SetCanSpawn(true);
         lockCountDown = false;
         lockDrop = false;
-        gameObject.SetActive(false);  
+        photonView.RPC(nameof(DeactiveDroneRPC), RpcTarget.AllBuffered);
     }
     IEnumerator LetDropWeapon()
     {

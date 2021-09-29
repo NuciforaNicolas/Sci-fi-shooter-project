@@ -6,13 +6,13 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
 using System.IO;
+using Multiplayer;
 
 namespace Managers
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
         #region Private field
-        string selectedLevel;
         [SerializeField]
         string playerPrefabsPathName; //I need to specify the prefab path or it'll give a null reference error
         #endregion
@@ -37,18 +37,18 @@ namespace Managers
 
         public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
         {
-            Debug.LogFormat("Player {0} joined the game", newPlayer.NickName);
+            DebugManager.instance.Log("Player " + newPlayer.NickName + " joined the game");
             if(PhotonNetwork.IsMasterClient)
             {
-                Debug.LogFormat("Master client joined the game: {0}", newPlayer.NickName);
-                //LoadArena();
+                DebugManager.instance.Log("Master client joined the game: " + newPlayer.NickName);
+               //LoadArena();
             }
         }
 
         public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
         {
-            Debug.LogFormat("Player {0} left the game", otherPlayer.NickName);
-            if(PhotonNetwork.IsMasterClient)
+            DebugManager.instance.Log("Player " + otherPlayer.NickName + " left the game");
+            if (PhotonNetwork.IsMasterClient)
             {
                 Debug.LogFormat("Master client left the game.");
                 //LoadArena();
@@ -58,15 +58,15 @@ namespace Managers
         #endregion
 
         #region Private Methods
-        void LoadArena()
+        /*void LoadArena()
         {
             if(!PhotonNetwork.IsMasterClient)
             {
                 Debug.Log("PhotonNetwork: trying to load a level but we are not the master client");
             }
-            Debug.LogFormat("PhotonNetwork: Loading Level...");
-            PhotonNetwork.LoadLevel(selectedLevel);
-        }
+            DebugManager.instance.Log("PhotonNetwork: Loading Level...");
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().name);
+        }*/
         #endregion
 
         #region Public methods
@@ -82,16 +82,6 @@ namespace Managers
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void SelectLevel(string levelName)
-        {
-            selectedLevel = levelName;
-        }
-
-        public string GetSelectedLevel()
-        {
-            return selectedLevel;
-        }
-
         #endregion
 
         #region MonoBehaviour callbacks
@@ -103,7 +93,7 @@ namespace Managers
             DontDestroyOnLoad(this.gameObject);
         }
 
-        private void SpawnPlayer()
+        private void Start()
         {
             if (!playerPrefab) Debug.LogError("Missing playerPref", this);
             //We are in a romm. Spawn a character for the local player. It gets synced by using PhotonNetwork.Istantiate
@@ -112,11 +102,11 @@ namespace Managers
                 PhotonNetwork.Instantiate(Path.Combine(playerPrefabsPathName, playerPrefab.name), new Vector3(UnityEngine.Random.Range(-spawnX, spawnX), 1, UnityEngine.Random.Range(-spawnZ, spawnZ)), Quaternion.identity, 0);
         }
 
-        private void OnLevelWasLoaded(int level)
+        /*private void OnLevelWasLoaded(int level)
         {
             //if (!PhotonNetwork.LocalPlayer.IsLocal) return;
             if(level > 0) SpawnPlayer();
-        }
+        }*/
 
         #endregion
 

@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2365866916992252552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2365866916992252553}
+  - component: {fileID: 2365866916992252566}
+  m_Layer: 0
+  m_Name: Bullet Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2365866916992252553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2365866916992252552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2365866917169878546}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2365866916992252566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2365866916992252552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d23990e64c253408cf568fbbc5e11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - poolName: PistolBullets
+    poolList: []
+    prefab: {fileID: 2721250287386970524, guid: 42a2d46ff05963b4b88dd367d9c2eeca,
+      type: 3}
+    listSize: 50
+  - poolName: SMGBullets
+    poolList: []
+    prefab: {fileID: 7225157869940858611, guid: 48eaea494aafff24384376080750c0b3,
+      type: 3}
+    listSize: 50
+  - poolName: MGBullets
+    poolList: []
+    prefab: {fileID: 3808371076017640436, guid: d13794c800ab4514889681083023ea39,
+      type: 3}
+    listSize: 40
+  - poolName: ShotgunBullets
+    poolList: []
+    prefab: {fileID: 1180696331237592975, guid: 48bb1f4f6b8393741a8885a6f27a1fc0,
+      type: 3}
+    listSize: 20
+  - poolName: SniperBullets
+    poolList: []
+    prefab: {fileID: 1180696331237592975, guid: 705279c589566764d9515af99808cccc,
+      type: 3}
+    listSize: 20
+  - poolName: RocketBullets
+    poolList: []
+    prefab: {fileID: 1180696331237592975, guid: 03cba6bb54ca5d1499399ce218253d76,
+      type: 3}
+    listSize: 10
+  - poolName: GranadeBullets
+    poolList: []
+    prefab: {fileID: 1180696331237592975, guid: fc70f82869766614a9ead0e075e896a8,
+      type: 3}
+    listSize: 10
+  container: {fileID: 2365866917169878546}
+  bulletPrefabPath: WeaponsPrefab/Bullets
+--- !u!1 &2365866917169878549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2365866917169878546}
+  m_Layer: 0
+  m_Name: BulletsContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2365866917169878546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2365866917169878549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2365866916992252553}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

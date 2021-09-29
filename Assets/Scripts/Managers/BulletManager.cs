@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 namespace Managers{
-    public class BulletManager : MonoBehaviour
+    public class BulletManager : MonoBehaviourPunCallbacks
     {
         public static BulletManager instance;
         [SerializeField] Pool[] pools;
         [SerializeField] Transform container;
         Dictionary<string, Pool> bulletPools;
+        [SerializeField] string bulletPrefabPath;
 
         // Start is called before the first frame update
         void Awake()
@@ -18,6 +22,7 @@ namespace Managers{
 
         private void Start()
         {
+            if (!PhotonNetwork.IsMasterClient) return;
             bulletPools = new Dictionary<string, Pool>();
             GenerateBulletPool();
         }
@@ -26,7 +31,7 @@ namespace Managers{
         {
             for(int i = 0; i < pools.Length; i++){
                 for(int j = 0; j < pools[i].listSize; j++){
-                    GameObject bullet = Instantiate<GameObject>(pools[i].prefab);
+                    GameObject bullet = PhotonNetwork.Instantiate(Path.Combine(bulletPrefabPath, pools[i].prefab.name), Vector3.zero, Quaternion.identity, 0);
                     bullet.SetActive(false);
                     pools[i].poolList.Add(bullet);
                     bullet.transform.parent = container;
@@ -42,7 +47,7 @@ namespace Managers{
             {
                 if (!bulletList[i].activeInHierarchy) return bulletList[i];
             }
-            GameObject newBullet = Instantiate<GameObject>(bulletPools[poolName].prefab);
+            GameObject newBullet = PhotonNetwork.Instantiate(Path.Combine(bulletPrefabPath, bulletPools[poolName].prefab.name), Vector3.zero, Quaternion.identity, 0);
             bulletPools[poolName].poolList.Add(newBullet);
             newBullet.transform.parent = container;
             return newBullet;

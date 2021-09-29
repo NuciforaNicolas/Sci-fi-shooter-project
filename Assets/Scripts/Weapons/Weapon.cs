@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Managers;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class Weapon : MonoBehaviour, IWeapon
+public class Weapon : MonoBehaviourPunCallbacks, IWeapon
 {
     [SerializeField] protected float shootTime, dropForce, timeToPickUp, timeToDeactive;
     [SerializeField] protected int magazineSize;
@@ -63,12 +65,36 @@ public class Weapon : MonoBehaviour, IWeapon
     protected IEnumerator StartDeactiveGunTimer()
     {
         yield return new WaitForSeconds(timeToDeactive);
-        DeactiveGun();
+        DeactiveWeaponAndIncreaseCounter();
     }
 
-    public void DeactiveGun()
+    public void ActiveWeapon()
+    {
+        Debug.Log("Weapon: calling ActiveWeaponRPC");
+        photonView.RPC(nameof(ActiveWeaponRPC), RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    protected void ActiveWeaponRPC()
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+        gameObject.SetActive(true);
+    }
+
+    public void DeactiveWeapon()
+    {
+        photonView.RPC(nameof(DeactiveWeaponRPC), RpcTarget.AllBuffered);
+    }
+
+    public void DeactiveWeaponAndIncreaseCounter()
     {
         SpawnWeaponManager.instance.IncreaseWeaponCounter(weaponType.ToString() + 's');
+        photonView.RPC(nameof(DeactiveWeaponRPC), RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    protected void DeactiveWeaponRPC()
+    {
         gameObject.SetActive(false);
     }
 

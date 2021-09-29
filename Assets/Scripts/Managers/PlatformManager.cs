@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PlatformManager : MonoBehaviour
+public class PlatformManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] float minTimeToFall, maxTimeToFall;
     [SerializeField] List<Platform> platformList;
@@ -12,6 +14,7 @@ public class PlatformManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        if (!PhotonNetwork.IsMasterClient) return;
         GameObject stage = GameObject.Find("Stage");
         if (stage != null)
         {
@@ -27,6 +30,7 @@ public class PlatformManager : MonoBehaviour
 
     void Update()
     {
+        if (!PhotonNetwork.IsMasterClient || !PhotonNetwork.IsConnected) return;
         if (canFall)
         {
             canFall = false;
