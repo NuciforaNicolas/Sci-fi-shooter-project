@@ -28,6 +28,8 @@ namespace Multiplayer
         /// </summary>
         bool isConnecting;
 
+        string selectedLevel;
+
         #endregion
 
         #region Public fields
@@ -68,9 +70,9 @@ namespace Multiplayer
         /// </summary>
         public void Connect()
         {
-            if(string.IsNullOrEmpty(GameManager.instance.GetSelectedLevel()))
+            if(string.IsNullOrEmpty(GetSelectedLevel()))
             {
-                Debug.LogError("You must select a level before play");
+                DebugManager.instance.Log("You must select a level before play");
                 return;
             }
 
@@ -129,9 +131,19 @@ namespace Multiplayer
             Debug.Log("PUN Launcher: OnJoinedRoom() called by PUN. Now this client is in the room");
             if(PhotonNetwork.CurrentRoom.PlayerCount == 1)
             {
-                Debug.LogFormat("Loading level {0}", GameManager.instance.GetSelectedLevel());
-                PhotonNetwork.LoadLevel(GameManager.instance.GetSelectedLevel());
+                Debug.LogFormat("Loading level {0}", GetSelectedLevel());
+                PhotonNetwork.LoadLevel(GetSelectedLevel());
             }
+        }
+
+        public void SelectLevel(string levelName)
+        {
+            selectedLevel = levelName;
+        }
+
+        public string GetSelectedLevel()
+        {
+            return selectedLevel;
         }
 
         #endregion

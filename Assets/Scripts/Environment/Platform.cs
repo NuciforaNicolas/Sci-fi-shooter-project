@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class Platform : MonoBehaviour
+public class Platform : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] float timeToChangeColor, fallSpeed;
     [SerializeField] Color colorA, colorB;
@@ -16,6 +18,7 @@ public class Platform : MonoBehaviour
     private void Awake()
     {
         renderer = GetComponent<Renderer>();
+        if (!photonView) Debug.LogError("Platform: Photonview component missing");
         currentHealth = maxHealth;
         colorAddictive = 1.0f / maxHealth;
     }
@@ -63,6 +66,33 @@ public class Platform : MonoBehaviour
         if (other.gameObject.layer.Equals("Explosive"))
         {
             DecreaseHealth();
+        }
+    }
+
+    public void DestroyPlatform()
+    {
+        isDestroyed = true;
+        photonView.RPC(nameof(DestroyPlatformRPC), RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    void DestroyPlatformRPC()
+    {
+        Debug.Log("DestroyPlatformRPC called: destroying platform");
+        gameObject.SetActive(false);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            var tmpColor = new Vector3(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b);
+            stream.SendNext(tmpColor);
+        }
+        else
+        {
+            var tmpColor = (Vector3) stream.ReceiveNext();
+            renderer.material.color = new Color(tmpColor.x, tmpColor.y, tmpColor.z, 1f);
         }
     }
 }

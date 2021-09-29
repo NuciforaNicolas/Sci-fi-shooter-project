@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 namespace Managers
 {
-    public class SpawnWeaponManager : MonoBehaviour
+    public class SpawnWeaponManager : MonoBehaviourPunCallbacks
     {
         [Header("Object Pooling Properties")]
         [SerializeField] GameObject drone;
@@ -13,6 +16,7 @@ namespace Managers
         [Header("Spawn Properties")]
         [SerializeField] List<Transform> spawnPositions;
         [SerializeField] float minTimeSpawn, maxTimeSpawn, minSpawnDegree, maxSpawnDegree;
+        [SerializeField] string dronePrefabPath, weaponPrefabPath;
 
 
         Dictionary<string, Pool> weaponsPools; //object pool delle armi
@@ -32,6 +36,7 @@ namespace Managers
 
         private void Start()
         {
+            if (!PhotonNetwork.IsMasterClient) return;
             weaponsPools = new Dictionary<string, Pool>();
             weaponSpawnedCounter = new Dictionary<string, int>();
             GenerateWeaponPool();
@@ -43,16 +48,22 @@ namespace Managers
 
         private void Update()
         {
+            if (!PhotonNetwork.IsMasterClient) return;
             if (canSpawn)
             {
                 canSpawn = false;
-                StartCoroutine("SpawnDrone");
+                StartCoroutine(SpawnDroneCoroutine());
             }
         }
 
-        IEnumerator SpawnDrone()
+        IEnumerator SpawnDroneCoroutine()
         {
             yield return new WaitForSeconds(spawnTime);
+            SpawnDrone();
+        }
+
+        void SpawnDrone()
+        {
             GameObject weapon = GetRandomWeapon();
             if (weapon != null)
             {
@@ -62,7 +73,7 @@ namespace Managers
                 var degree = Random.Range(minSpawnDegree, maxSpawnDegree);
                 droneInstance.transform.Rotate(0, spawnPos.transform.rotation.y + degree, 0);
                 SetDroneWeapon(ref weapon);
-                droneInstance.SetActive(true);
+                droneInstance.GetComponent<Drone>().ActiveDrone();
             }
         }
 
@@ -72,8 +83,7 @@ namespace Managers
             weapon.transform.parent = droneWeaponSLot;
             weapon.transform.position = droneWeaponSLot.position;
             weapon.transform.rotation = droneWeaponSLot.rotation;
-            weapon.GetComponent<Rigidbody>().isKinematic = true;
-            weapon.SetActive(true);
+            weapon.GetComponent<Weapon>().ActiveWeapon();
         }
 
         void GenerateWeaponPool()
@@ -82,8 +92,8 @@ namespace Managers
             {
                 for(int j = 0; j < pools[i].listSize; j++)
                 {
-                    GameObject weapon = Instantiate<GameObject>(pools[i].prefab);
-                    weapon.SetActive(false);
+                    GameObject weapon = PhotonNetwork.Instantiate(Path.Combine(weaponPrefabPath, pools[i].prefab.name), Vector3.zero, Quaternion.identity, 0);
+                    weapon.GetComponent<Weapon>().DeactiveWeapon();
                     pools[i].poolList.Add(weapon);
                     weapon.transform.parent = weaponContainer;
                 }
@@ -94,8 +104,8 @@ namespace Managers
 
         void CreateDrone()
         {
-            droneInstance = Instantiate<GameObject>(drone);
-            droneInstance.SetActive(false);
+            droneInstance = PhotonNetwork.Instantiate(Path.Combine(dronePrefabPath, drone.name), Vector3.zero, Quaternion.identity, 0);
+            droneInstance.GetComponent<Drone>().DeactiveDrone();
             droneInstance.transform.parent = droneContainer;
         }
 

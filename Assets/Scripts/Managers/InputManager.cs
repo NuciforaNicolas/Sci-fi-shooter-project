@@ -28,7 +28,10 @@ namespace Managers
         public static InputManager instance;
 
         void Awake()
-        {
+        {   
+            instance = this;
+            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) useKeyboardMouse = true;
+
             rigidBody = GetComponent<Rigidbody>();
             controller = new PlayerController();
             player = GetComponent<Character.Player>();
@@ -91,19 +94,11 @@ namespace Managers
             }
         }
 
-        private void Start()
-        {
-            instance = this;
-            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) useKeyboardMouse = true;
-            //anim = GetComponent<Animator>();
-            //if (!anim) Debug.LogError("InputManager: animator component is missing", this);
-        }
-
         // Update is called once per frame
         void FixedUpdate()
         {
             //Se il client è collegato ma non è locale, allora non gestisco l'input
-            if (!photonView.IsMine && PhotonNetwork.IsConnected) return; 
+            if (!photonView.IsMine) return; 
             if (enableControl)
             {
                 Aim();
